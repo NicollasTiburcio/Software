@@ -1,0 +1,10 @@
+title: "Engenharia de Software"
+description: "Acervo didático e guias de estudo de Computação, programação e tecnologia."
+
+theme: jekyll-theme-midnight
+
+show_downloads: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
