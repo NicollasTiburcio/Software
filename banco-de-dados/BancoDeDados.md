@@ -46,6 +46,7 @@ Os SGBDs mais comuns são:
 - MongoDB (NoSQL)
 - Redis (NoSQL)
 
+![Exemplo do SGBD Letos](imagens/letos.png)
 ___
 
 ## Modelagem de Bancos de Dados Relacionais
