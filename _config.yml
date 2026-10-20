@@ -1,10 +1,12 @@
-title: "Engenharia de Software"
-description: "Acervo didático e guias de estudo de Computação, programação e tecnologia."
+title: Engenharia de Software
+description: Apostilas e materiais didáticos de Computação
 
-theme: jekyll-theme-midnight
-
-show_downloads: false
+remote_theme: jekyll/minima
 
 plugins:
+  - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-feed
+
+minima:
+  skin: dark
