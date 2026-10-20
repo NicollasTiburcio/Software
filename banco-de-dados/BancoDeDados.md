@@ -115,6 +115,8 @@ Fazendo o mesmo com a regra de negócio para Livro:
 
 De acordo com essa regra, podemos notar que o valor (min, max) dessa relação é de no mínimo 0 e no máximo 1 aluno, resultando em **(0, 1)**.
 
+![Notação básica do DER](imagens/DER1.png)
+
 ### Tipos de Entidades
 
 Existem vários tipos de entidades, que podem ser classificadas de acordo com sua autonomia no sistema:
@@ -140,6 +142,8 @@ Para decidir se algo deve ser mapeado como Entidade, Atributo ou Relacionamento,
 1. É um substantivo ou objeto que existe por si só? Faz sentido existir no sistema mesmo que não realize nenhuma ação no momento? Se sim, é uma **Entidade Forte** (ex: `Aluno`, `Livro`, `Editora`).
 2. É uma característica isolada que não faz sentido existir sozinha? Uma data, nome ou valor soltos no vácuo fazem sentido sem estar ligados a alguém? Se não, vira um **Atributo** (ex: `Nome`, `DataNascimento`, `Preço`).
 3. É uma ação ou evento que acontece várias vezes e precisa guardar histórico? Essa ação precisa registrar quando aconteceu, qual o status ou a data de devolução ao longo do tempo? Se sim, a ação deixa de ser um simples vínculo e vira uma **Entidade Associativa** (ex: `Empréstimo`, `Venda`, `Matrícula`).
+
+![Diagrama DER com multiplas entidades](imagens/DER2.png)
 
 ### Modelo Lógico Relacional
 
@@ -176,7 +180,7 @@ Para mapear o Modelo Conceitual para o Modelo Lógico Relacional, seguimos estas
 
 #### Símbolos do Diagrama Lógico Relacional
 
-Enquanto o DER conceitual (modelo de Chen) utiliza formas geométricas abstratas (retângulos, losangos e elipses), o \*\*Diagrama Lógico Relacional\*\* (ou Diagrama ER Lógico) representa a estrutura física próxima do banco de dados real. Os principais elementos visuais são:
+Enquanto o DER conceitual (modelo de Chen) utiliza formas geométricas abstratas (retângulos, losangos e elipses), o Diagrama Lógico Relacional (ou Diagrama ER Lógico) representa a estrutura física próxima do banco de dados real. Os principais elementos visuais são:
 
 - *Tabelas (Entidades Relacionais):* Retângulos divididos em duas seções: o cabeçalho com o nome da tabela e o corpo com a lista de colunas.
 - *Colunas e Tipos de Dados:* Cada linha da tabela indica o nome do atributo e seu tipo de dado correspondente (ex.: `id INTEGER`, `nome VARCHAR(100)`).
@@ -206,7 +210,7 @@ Cada extremidade possui dois símbolos adjacentes:
 - A extremidade próxima à tabela Pai indica quantos registros pais uma linha da tabela filha pode ter (normalmente `1,1` ou `0,1`).
 - A extremidade próxima à tabela Filha indica quantos registros filhos uma linha da tabela pai pode possuir (`0,N` ou `1,N`).
 
-![Notação de cardinalidade do modelo ER](imagens/ERCardinalidade.png)
+![Modelo ER construído](imagens/ER1.png)
 ___
 
 ## SQL
