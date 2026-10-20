@@ -1,6 +1,9 @@
 title: Engenharia de Software
 description: Apostilas e materiais didáticos de Computação
 
+url: "https://nicollastiburcio.github.io"
+baseurl: "/Software"
+
 remote_theme: jekyll/minima
 
 plugins:
