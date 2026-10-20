@@ -115,7 +115,7 @@ Fazendo o mesmo com a regra de negócio para Livro:
 
 De acordo com essa regra, podemos notar que o valor (min, max) dessa relação é de no mínimo 0 e no máximo 1 aluno, resultando em **(0, 1)**.
 
-![Notação básica do DER](imagens/DER1.png)
+![Notação básica do DER](imagens/DER.png)
 
 ### Tipos de Entidades
 
