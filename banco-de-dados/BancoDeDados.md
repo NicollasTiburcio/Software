@@ -20,7 +20,7 @@ Uma forma muito comum de armazenar e organizar dados é por meio de planilhas. E
 - **Acesso simultâneo:** duas pessoas editando o mesmo arquivo podem sobrescrever o trabalho uma da outra.
 - **Falta de controle de acesso:** quem abre o arquivo vê e altera tudo.
 
-___
+![Exemplo de planilhas](imagens/planilha.jpg)
 
 ## Sistemas de Gerenciamento de Bancos de Dados (SGBDs)
 
@@ -47,7 +47,6 @@ Os SGBDs mais comuns são:
 - Redis (NoSQL)
 
 ![Exemplo do SGBD Letos](imagens/letos.png)
-___
 
 ## Modelagem de Bancos de Dados Relacionais
 
@@ -212,7 +211,6 @@ Cada extremidade possui dois símbolos adjacentes:
 - A extremidade próxima à tabela Filha indica quantos registros filhos uma linha da tabela pai pode possuir (`0,N` ou `1,N`).
 
 ![Modelo ER construído](imagens/ER1.png)
-___
 
 ## SQL
 
