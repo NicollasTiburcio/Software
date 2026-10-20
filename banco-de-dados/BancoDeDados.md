@@ -206,7 +206,7 @@ Cada extremidade possui dois símbolos adjacentes:
 - A extremidade próxima à tabela Pai indica quantos registros pais uma linha da tabela filha pode ter (normalmente `1,1` ou `0,1`).
 - A extremidade próxima à tabela Filha indica quantos registros filhos uma linha da tabela pai pode possuir (`0,N` ou `1,N`).
 
-[Notação de cardinalidade do modelo ER](imagens/ERCardinalidade.png)
+![Notação de cardinalidade do modelo ER](imagens/ERCardinalidade.png)
 ___
 
 ## SQL
