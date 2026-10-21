@@ -11,42 +11,42 @@ Escolha uma disciplina para acessar sua apostila. Quando houver atividades dispo
 
 ## Disciplinas
 
-### [Lógica de Programação](./logica-de-programacao/LogicaDeProgramacao.html)
+### [Logica](./Logica/Logica.html)
 
 Fundamentos de algoritmos, lógica, estruturas de controle e resolução de problemas.
 
-- [Apostila](./logica-de-programacao/LogicaDeProgramacao.html)
-- [Atividades](./logica-de-programacao/atividades.html)
+- [Apostila](./Logica/Logica.html)
+- [Atividades](./Logica/atividades.html)
 
-### [Linguagem de Programação — Python](./python/Python.html)
+### [Python](./Python/Python.html)
 
 Estudo da linguagem Python, seus recursos e sua aplicação na programação. *(Em construção.)*
 
-- [Apostila](./python/Python.html)
+- [Apostila](./Python/Python.html)
 
-### [Programação Orientada a Objetos](./poo/POO.html)
+### [Programação Orientada a Objetos](./POO/POO.html)
 
 Conceitos de classes, objetos e organização de programas com orientação a objetos. *(Em construção.)*
 
-- [Apostila](./poo/POO.html)
+- [Apostila](./POO/POO.html)
 
-### [Banco de Dados](./banco-de-dados/BancoDeDados.html)
+### [Banco de Dados](./Database/Database.html)
 
 Conceitos de bancos de dados, modelagem e organização de informações. *(Em construção.)*
 
-- [Apostila](./banco-de-dados/BancoDeDados.html)
+- [Apostila](./Database/Database.html)
 
-### [Arquitetura e Organização de Computadores](./arquitetura-de-computadores/ArquiteturaComputadores.html)
+### [Arquitetura e Organização de Computadores](./ArquiteturaComputadores/ArquiteturaComputadores.html)
 
 Estudo da organização dos computadores e dos conceitos fundamentais de hardware. *(Em construção.)*
 
-- [Apostila](./arquitetura-de-computadores/ArquiteturaComputadores.html)
+- [Apostila](./arquiteturaComputadores/ArquiteturaComputadores.html)
 
-### [História dos Computadores](./historia-dos-computadores/HistoriaComputadores.html)
+### [História dos Computadores](./Historia/Historia.html)
 
 Uma visão da evolução dos computadores e da história da Computação. *(Em construção.)*
 
-- [Apostila](./historia-dos-computadores/HistoriaComputadores.html)
+- [Apostila](./Historia/Historia.html)
 
 ---
 

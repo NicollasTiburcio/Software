@@ -37,8 +37,8 @@ Para navegar pelos materiais, acesse o [site publicado pelo GitHub Pages](SITE_U
 ├── Database/
 │   ├── Database.md
 │   └── imagens/
-├── Arquitetura_Computadores/
-│   ├── Arquitetura_Computadores.md
+├── ArquiteturaComputadores/
+│   ├── ArquiteturaComputadores.md
 │   └── imagens/
 └── Historia/
     ├── Historia.md
