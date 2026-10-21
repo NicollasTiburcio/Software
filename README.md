@@ -24,6 +24,10 @@ Para navegar pelos materiais, acesse o [site publicado pelo GitHub Pages](SITE_U
 ├── README.md
 ├── index.md
 ├── _config.yml
+├── Algoritmos/
+│   ├── Algoritmos.md
+│   ├── atividades.md
+│   └── imagens/
 ├── Logica/
 │   ├── Logica.md
 │   ├── atividades.md
