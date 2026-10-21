@@ -24,24 +24,24 @@ Para navegar pelos materiais, acesse o [site publicado pelo GitHub Pages](SITE_U
 ├── README.md
 ├── index.md
 ├── _config.yml
-├── logica-de-programacao/
-│   ├── LogicaDeProgramacao.md
+├── Logica/
+│   ├── Logica.md
 │   ├── atividades.md
 │   └── imagens/
-├── python/
+├── Python/
 │   ├── Python.md
 │   └── imagens/
-├── poo/
+├── POO/
 │   ├── POO.md
 │   └── imagens/
-├── banco-de-dados/
-│   ├── BancoDeDados.md
+├── Database/
+│   ├── Database.md
 │   └── imagens/
-├── arquitetura-de-computadores/
-│   ├── ArquiteturaComputadores.md
+├── Arquitetura_Computadores/
+│   ├── Arquitetura_Computadores.md
 │   └── imagens/
-└── historia-dos-computadores/
-    ├── HistoriaComputadores.md
+└── Historia/
+    ├── Historia.md
     └── imagens/
 ```
 
