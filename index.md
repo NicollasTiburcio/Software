@@ -11,6 +11,13 @@ Escolha uma disciplina para acessar sua apostila. Quando houver atividades dispo
 
 ## Disciplinas
 
+### [Algoritmos](./Algoritmos/Algoritmos.html)
+
+Fundamentos de algoritmos, lógica, estruturas de controle e resolução de problemas.
+
+- [Apostila](./Algoritmos/Algoritmos.html)
+- [Atividades](./Algoritmos/atividades.html)
+
 ### [Logica](./Logica/Logica.html)
 
 Fundamentos de algoritmos, lógica, estruturas de controle e resolução de problemas.
