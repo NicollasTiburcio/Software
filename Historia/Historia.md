@@ -6,7 +6,7 @@ Ao longo da história humana, a necessidade de contar esteve presente na rotina 
 
 ![Ábaco Romano](imagens/1.0-abaco-romano.png)
 
-*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/%C3%81baco)
+*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/%C3%81baco)*
 
 No século XVII, a busca por automação deu início à era mecânica. Foi nesse período que surgiu a Pascalina, a primeira calculadora mecânica, capaz de realizar somas e subtrações por meio de um sistema de engrenagens.
 
@@ -14,7 +14,7 @@ A Pascalina foi projetada para realizar adição e subtração diretamente, efet
 
 ![Pascalina](imagens-historia/1.1-pascalina.png)
 
-*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/Pascalina)
+*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/Pascalina)*
 
 Já no século XIX, a Máquina Analítica deu o salto definitivo ao introduzir o conceito de máquina programável, capaz de armazenar e processar dados autonomamente, criando a base conceitual que pavimentou o caminho para o surgimento dos computadores eletrônicos no século XX.
 
@@ -22,7 +22,7 @@ Projetada por Charles Babbage, a Máquina Analítica utilizava cartões perfurad
 
 ![Máquina Analítica](imagens/1.2-maquina-analitica.png)
 
-*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/M%C3%A1quina_anal%C3%ADtica)
+*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/M%C3%A1quina_anal%C3%ADtica)*
 
 ## 2. Teoria da Computação
 
@@ -38,7 +38,7 @@ A partir desse modelo teórico, nasceu o conceito de Turing-completo: diz-se que
 
 ![Máquina de Turing](imagens/Turing_Machine.png)
 
-*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/M%C3%A1quina_de_Turing#/media/Ficheiro:Turing_Machine.png)
+*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/M%C3%A1quina_de_Turing#/media/Ficheiro:Turing_Machine.png)*
 
 ### O Computador
 
@@ -60,13 +60,13 @@ O ENIAC, construído em 1945, é considerado um dos primeiros exemplos práticos
 
 ![ENIAC](imagens/ENIAC.jpg)
 
-*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/ENIAC#/media/Ficheiro:Two_women_operating_ENIAC_(full_resolution).jpg)
+*Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/ENIAC#/media/Ficheiro:Two_women_operating_ENIAC_(full_resolution).jpg)*
 
 ### Mark I
 
 ![Harvard Mark I](imagens/HarvardMarkI.JPG)
 
-*Fonte: [Wikipedia](https://en.wikipedia.org/wiki/Harvard_Mark_I#/media/File:Harvard_Mark_I_Computer_-_Right_Segment.JPG)
+*Fonte: [Wikipedia](https://en.wikipedia.org/wiki/Harvard_Mark_I#/media/File:Harvard_Mark_I_Computer_-_Right_Segment.JPG)*
 
 
 ## 3. Era Eletrônica
