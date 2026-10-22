@@ -301,3 +301,84 @@ O SQL é uma linguagem unificada, mas seus comandos são categorizados em sublin
 | **`COMMIT`** | Salva permanentemente no banco todas as operações realizadas na transação. | `COMMIT;` |
 | **`ROLLBACK`** | Descarta e desfaz todas as operações realizadas na transação. | `ROLLBACK;` |
 | **`SAVEPOINT`** | Cria um ponto de salvamento intermediário para desfazer apenas parte das alterações com `ROLLBACK TO`. | `SAVEPOINT ponto;` |
+
+## Python + SQLite3
+
+O módulo `sqlite3` do Python permite acessar e manipular bancos de dados diretamente. Essa integração é feita através de elementos aplicados dentro do código Python.
+
+- **`import sqlite3`**: Devemos importar a biblioteca para nosso projeto para que os comandos funcionem corretamente.
+- **`conn` (Conexão)**: Criamos uma variável de conexão para estabelecer uma ponte entre o Python e o arquivo de banco de dados. Sem essa variável, não podemos realizar a conexão e a manipulação do banco de dados. Essa variável se conecta à função `sqlite3.connect()` e, caso o banco de dados não exista no diretório apontado, ele é criado. Exemplo: `conn = sqlite3.connect("meu_banco.db")`.
+- **`cursor` (Cursor)**: Criado com o objeto `conn.cursor()`, tem como objetivo apontar e executar comandos SQL no banco de dados. É com ele que passamos os comandos que irão modificar nosso banco de dados. Exemplo: `cursor = conn.cursor()`.
+- **`cursor.execute()`**: É o método que irá rodar o código SQL passado como parâmetro na forma de string. Exemplo: `cursor.execute("INSERT INTO tabela (coluna) VALUES (valor)")`.
+- **`conn.commit()`**: Método responsável por salvar as alterações no arquivo de banco de dados.
+- **`cursor.close()` e `conn.close()`**: Nessa ordem, encerram o cursor e a conexão, liberando o banco de dados. Devem sempre ser utilizados ao final do processo executado para evitar erros ou bloqueios no arquivo do banco de dados.
+
+Exemplo de código:
+
+```python
+import sqlite3
+
+def tabela_livros(banco):
+    conn = sqlite3.connect(banco)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS Livros (
+            Codigo INTEGER PRIMARY KEY AUTOINCREMENT,
+            Titulo TEXT NOT NULL,
+            Autor TEXT NOT NULL
+        );
+    """)
+    conn.commit()
+    cursor.close()
+    conn.close()
+```
+
+### CRUD
+
+Podemos realizar todas as operações do CRUD (Create, Read, Update, Delete) diretamente por meio de funções em Python.
+
+**Create**
+```python
+def criar_livro(banco, titulo, autor):
+    conn = sqlite3.connect(banco)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO livros (titulo, autor) VALUES (?, ?)", (titulo, autor))
+    conn.commit()
+    cursor.close()
+    conn.close()
+```
+
+**Read**
+```python
+def listar_livros(banco):
+    conn = sqlite3.connect(banco)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, titulo, autor FROM livros")
+    saida = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    for livro in saida:
+        print(livro)
+```
+
+**Update**
+```python
+def atualizar_livro(banco, id_livro, novo_titulo):
+    conn = sqlite3.connect(banco)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE livros SET titulo = ? WHERE id = ?", (novo_titulo, id_livro))
+    conn.commit()
+    cursor.close()
+    conn.close()
+```
+
+**Delete**
+```python
+def deletar_livro(banco, id_livro):
+    conn = sqlite3.connect(banco)
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM livros WHERE id = ?", (id_livro,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+```
