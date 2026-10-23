@@ -58,7 +58,7 @@ Tuplas são coleções ordenadas e imutáveis de elementos, utilizadas principal
 - **Ordenação:** Seus elementos são organizados por índices, mantendo a ordem exata em que foram inseridos.
 - **Duplicidade de dados:** Permitem valores repetidos dentro de si.
 - **Heterogêneas:** Suportam múltiplos tipos de dados simultaneamente.
-- **Sintaxe:** São criadas utilizando parênteses. Ex.: `tupla = (elemento1, elemento2)`
+- **Sintaxe:** São declaradas utilizando parênteses, com os elementos separados por vírgulas. Ex.: `tupla = (elemento1, elemento2)`
 
 **Vantagens:** Maior proteção da integridade dos dados (devido à sua imutabilidade), menor consumo de memória e processamento em relação às listas.
 
@@ -70,7 +70,7 @@ Tuplas são coleções ordenadas e imutáveis de elementos, utilizadas principal
 - Resultados de consultas em bancos de dados (ex.: `(nome, cpf, data_nascimento)`).
 
 **Exemplo de tupla**
-```python
+```Python
 # Criando uma tupla
 tupla = ("João", 18)
 
@@ -87,14 +87,14 @@ print(len(tupla))    # Saída: 2
 
 **Métodos de tuplas**
 
-| Método | Descrição | Exemplo | Retorno |
+| Método | Descrição | Exemplo | Resultado |
 |---|---|---|---|
 | `count(x)` | Conta quantas vezes um valor aparece | `(1, 2, 2).count(2)` | `2` |
 | `index(x)` | Retorna o índice da primeira ocorrência | `(10, 20, 30).index(20)` | `1` |
 
 **Funções aplicáveis a tuplas**
 
-| Função | Descrição | Exemplo | Retorno |
+| Função | Descrição | Exemplo | Resultado |
 |---|---|---|---|
 | `len()` | Retorna a quantidade de elementos | `len((1, 2, 3))` | `3` |
 | `max()` | Retorna o maior elemento | `max((4, 8, 2))` | `8` |
@@ -103,3 +103,62 @@ print(len(tupla))    # Saída: 2
 | `tuple()` | Converte um iterável em tupla | `tuple([1, 2, 3])` | `(1, 2, 3)` |
 | `zip()` | Combina elementos de iteráveis pelos índices, produzindo tuplas. | `tuple(zip([1, 2], ["A", "B"]))` | `((1, "A"), (2, "B"))` |
 
+
+### Dicionários
+
+Dicionários são estruturas de dados que armazenam informações em pares `Chave: Valor`.
+
+**Características Gerais**
+
+- **Estrutura `Chave: Valor`:** Os dados são armazenados em pares, nos quais cada valor é acessado por uma chave única.
+- **Chaves únicas e imutáveis:** As chaves devem ser de um tipo imutável (str, int, tuple...) e não podem ser duplicadas. Se uma chave for declarada novamente, ela irá sobrescrever o valor anterior.
+- **Valores:** Os valores associados às chaves podem ser de qualquer tipo e alterados a qualquer momento.
+- **Sintaxe:** São criados utilizando chaves (`{}`), com cada par separado por vírgula. Ex.: `dicionario = {"João": 18, "Julia": 20}`.
+
+**Vantagens:** Buscas de dados extremamente rápidas, sem necessidade de percorrer os elementos da estrutura. Úteis para representar entidades e objetos por meio da combinação de chave (identificador) e valor (atributo).
+
+**Desvantagens:** Consomem mais memória RAM do que listas e tuplas.
+
+**Cenários de Uso**
+- Mapeamento de entidades com atributos (ex.: criar a representação de um usuário e seus respectivos atributos).
+- Tabelas de consulta (ex.: associar o código de um produto ao seu preço).
+
+**Exemplo de Dicionário**
+
+```Python
+# Criando um dicionário
+alunos = {"João": 18, "Julia": 20, "Igor": 17}
+
+# Acessando valores pela chave
+print(alunos["João"])    # Saída: 18
+
+# Adicionando valores
+alunos["Thiago"] = 33
+print(alunos["Thiago"])   # Saída: 33
+
+# Alterando valores
+alunos["Igor"] = 19
+print(alunos["Igor"])     # Saída: 19
+
+# Removendo um par
+del alunos["Igor"]
+print(alunos)             # Saída: {'João': 18, 'Julia': 20, 'Thiago': 33}
+```
+
+**Métodos de dicionários**
+
+| Método | Descrição | Exemplo | Retorno |
+|---|---|---|---|
+| `keys()` | Retorna uma visualização das chaves do dicionário, que pode ser percorrida ou convertida em lista | `{"A": 10, "B": 20}.keys()` | `dict_keys(['A', 'B'])` |
+| `values()` | Retorna uma visualização dos valores do dicionário, que pode ser percorrida ou convertida em lista | `{"A": 10, "B": 20}.values()` | `dict_values([10, 20])` |
+| `items()` | Retorna uma visualização dos pares chave-valor, representados por tuplas, que pode ser percorrida ou convertida em lista | `{"A": 10, "B": 20}.items()` | `dict_items([('A', 10), ('B', 20)])` |
+| `update()` | Adiciona ou atualiza pares chave-valor | `dicionario = {"A": 10, "B": 20}; dicionario.update({"B": 30})` | `None` (modifica `dicionario`) |
+| `pop(chave)` | Remove uma chave e retorna seu valor | `dicionario = {"A": 10, "B": 20}; dicionario.pop("A")` | `10` |
+| `clear()` | Remove todos os elementos do dicionário | `dicionario = {"A": 10, "B": 20}; dicionario.clear()` | `dicionario = {}` |
+
+**Funções aplicadas a dicionários**
+
+| Função | Descrição | Exemplo | Retorno |
+|---|---|---|---|
+| `len()` | Retorna a quantidade de pares chave-valor | `len({"A": 10, "B": 20})` | `2` |
+| `dict()` | Cria um dicionário a partir de pares chave-valor | `dict([("A", 10), ("B", 20)])` | `{'A': 10, 'B': 20}` |
