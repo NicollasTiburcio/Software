@@ -1,6 +1,4 @@
-# História dos Computadores
-
-## 1. Introdução
+## Introdução
 
 Ao longo da história humana, a necessidade de contar esteve presente na rotina da sociedade. Registrava-se o controle de rebanhos, o estoque de colheitas, o peso de metais e o volume de trocas comerciais. Para acelerar esses processos, surgiram os primeiros métodos manuais de auxílio ao cálculo, como o ábaco.
 
@@ -24,7 +22,7 @@ Projetada por Charles Babbage, a Máquina Analítica utilizava cartões perfurad
 
 *Fonte: [Wikipedia](https://pt.wikipedia.org/wiki/M%C3%A1quina_anal%C3%ADtica)*
 
-## 2. Teoria da Computação
+## Teoria da Computação
 
 ### A Computação
 
@@ -69,7 +67,7 @@ O ENIAC, construído em 1945, é considerado um dos primeiros exemplos práticos
 *Fonte: [Wikipedia](https://en.wikipedia.org/wiki/Harvard_Mark_I#/media/File:Harvard_Mark_I_Computer_-_Right_Segment.JPG)*
 
 
-## 3. Era Eletrônica
+## Era Eletrônica
 
 Cada geração de computadores é contada em três pontos:
 

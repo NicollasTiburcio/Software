@@ -1,10 +1,6 @@
-# Lógica de Programação
-
-### 1. Lógica de Programação - Definição
-
 Lógica de programação é o emprego de raciocínio lógico para compreensão e resolução de problemas através do uso de algoritmos estruturados.
 
-### 2. Tipos de Linguagem
+## Tipos de Linguagem
 
 **Linguagem de Máquina** é a linguagem de mais baixo nível. Quase incompreensível para o ser humano, mas é a única que o computador compreende. Ela é formada por códigos binários, usando apenas 0 e 1.
 
@@ -12,7 +8,7 @@ Lógica de programação é o emprego de raciocínio lógico para compreensão e
 
 **Linguagem de Alto Nível** é a linguagem mais próxima da linguagem humana, usada para criar programas e algoritmos sem a necessidade de criar instrução por instrução. Alguns exemplos são a linguagem C e o Python.
 
-### 3. Compiladores e Interpretadores
+## Compiladores e Interpretadores
 
 São programas responsáveis por traduzir linguagens de programação para linguagem de máquina.
 
@@ -25,19 +21,19 @@ Os compiladores trabalham em 3 etapas:
 Nos interpretadores, o programa é lido e executado linha por linha, não gerando um arquivo final "montado".
 Linguagens como Python costumam utilizar este método para facilitar o desenvolvimento.
 
-### 4. Conceito de Algoritmo
+## Conceito de Algoritmo
 
 Um algoritmo é uma sequência de passos lógicos e ordenados com o objetivo de realizar uma determinada tarefa.
 
 Todo software é um conjunto de algoritmos direcionados a uma finalidade, não existindo programa sem um objetivo prático.
 
-### 5. Análise e Síntese de Problemas
+## Análise e Síntese de Problemas
 
 Para a resolução de problemas, passamos primeiro pelo processo de análise, onde identificamos as variáveis envolvidas (entidades e condições) e elaboramos um plano de ação para solucionar o problema.
 
 Na fase de síntese do problema, transformamos nosso plano de ação em um algoritmo para resolver o caso. É na fase de síntese que identificamos falhas lógicas em nosso plano, o que nos leva a reavaliar o plano de ação.
 
-### 6. Fluxograma e seus Símbolos
+## Fluxograma e seus Símbolos
 
 Fluxogramas são ferramentas visuais utilizadas para representar uma sequência de passos tomados, descrevendo a lógica para resolver um determinado problema através de símbolos gráficos.
 
@@ -52,11 +48,11 @@ Fluxogramas são ferramentas visuais utilizadas para representar uma sequência 
 | Retângulo com canto cortado | Entrada manual           | Representa a inserção manual de dados no programa.                                                        |
 | Pentágono/seta              | Exibição                 | Representa o ponto onde há exibição de informação em um fluxo.                                            |
 
-### 7. Tipos de Dados
+## Tipos de Dados
 
 Para desenvolver softwares úteis, utilizamos diversos tipos de dados e estruturas para organizar e manipular esses dados.
 
-#### Tipos primitivos
+### Tipos primitivos
 
 Os tipos primitivos são os tipos de dados básicos que podem ser atribuídos às variáveis, cada qual com sua função.
 
@@ -68,7 +64,7 @@ Os tipos primitivos são os tipos de dados básicos que podem ser atribuídos à
 | Booleanos (bool) | Representam os valores lógicos verdadeiro (True) e falso (False) |
 | None (NoneType) | Representa a ausência de um valor |
 
-#### Tipos construídos (estruturas de dados)
+### Tipos construídos (estruturas de dados)
 
 Estruturas de dados são objetos criados para armazenar e manipular dados de diversas formas, cada qual com suas características próprias. De forma conceitual, as principais estruturas construídas são:
 
@@ -78,7 +74,7 @@ Estruturas de dados são objetos criados para armazenar e manipular dados de div
 
 Em Python, a implementação prática desses conceitos é feita com listas (`lista = [1, 2, 3]`) e listas de listas para representar matrizes (`matriz = [[1, 2], [3, 4]]`).
 
-##### Manipulando Listas
+#### Manipulando Listas
 
 Além de criar uma lista, é possível adicionar e remover itens dela depois de criada:
 
@@ -104,7 +100,7 @@ del lista[1]                 # ["Ana", "Julia"]
 print(lista)
 ```
 
-#### Introdução às funções print() e type()
+### Introdução às funções print() e type()
 
 Para exibir um valor na tela, usamos `print()`. Para checar o tipo de um dado, usamos `type()`, preenchendo-a com a variável ou valor que se quer consultar.
 
@@ -121,7 +117,7 @@ Saída:
 <class 'int'>
 ```
 
-### 8. Operadores Aritméticos e Ordem de Precedência
+## Operadores Aritméticos e Ordem de Precedência
 
 São operadores utilizados para a realização de cálculos matemáticos.
 
@@ -137,9 +133,9 @@ São operadores utilizados para a realização de cálculos matemáticos.
 
 **Precedência Matemática:** Os cálculos são realizados seguindo uma ordem de prioridade: primeiro os parênteses, depois a exponenciação, em seguida multiplicação, divisão, divisão inteira e módulo e, por último, adição e subtração.
 
-### 9. Operadores Lógicos e Relacionais
+## Operadores Lógicos e Relacionais
 
-#### Operadores Relacionais (Condicionais)
+### Operadores Relacionais (Condicionais)
 
 Servem para comparar valores, sendo sempre verdadeiro ou falso (booleano).
 
@@ -152,7 +148,7 @@ Servem para comparar valores, sendo sempre verdadeiro ou falso (booleano).
 | >= | Se "a" é maior ou igual a "b" |
 | <= | Se "a" é menor ou igual a "b" |
 
-#### Operadores Lógicos
+### Operadores Lógicos
 
 Servem para unir 2 ou mais comparações, atribuindo resultado de acordo com sua condição.
 
@@ -162,7 +158,7 @@ Servem para unir 2 ou mais comparações, atribuindo resultado de acordo com sua
 | or | É verdadeiro se a condição "a" ou a condição "b" forem verdadeiros. |
 | not | Inverte a condição de "a" (verdadeiro ou falso). |
 
-### 10. Estruturas Condicionais (if/else)
+## Estruturas Condicionais (if/else)
 
 Servem para controlar o fluxo de um programa de acordo com suas condições.
 
@@ -170,11 +166,11 @@ Servem para controlar o fluxo de um programa de acordo com suas condições.
 - **elif** -> Se `if` for falso, executa uma nova comparação.
 - **else** -> Executa se nenhuma operação for verdadeira.
 
-### 11. Loops e Repetições (while/for)
+## Loops e Repetições (while/for)
 
 Quando precisamos checar um valor várias vezes ou executar um bloco de código múltiplas vezes, podemos usar as estruturas `while` e `for`.
 
-#### While (Enquanto)
+### While (Enquanto)
 
 Utilizamos o `while` quando não sabemos exatamente quantas vezes o código precisa se repetir. Nesta estrutura, estamos dizendo: "Enquanto uma condição for verdadeira, faça...". É preciso garantir que, em algum momento, a condição de parada seja atingida para evitar um "loop infinito" (o programa rodando indefinidamente).
 
@@ -183,12 +179,12 @@ while condição:
     bloco de código do loop
 ```
 
-#### Iterável e iterador
+### Iterável e iterador
 
 - Um iterável é um elemento ou estrutura de dados que permite que, internamente, seus elementos sejam percorridos individualmente.
 - Um iterador é um objeto que move-se dentro de uma estrutura organizada e entrega elemento por elemento, avançando automaticamente para o próximo, até que não haja mais como avançar.
 
-#### For (Para)
+### For (Para)
 
 O `for` é uma estrutura de repetição usada para percorrer os elementos de um iterável, sendo lido conceitualmente como: "Para cada item/elemento dentro desta coleção, faça...".
 No `for`, Python obtém um iterador a partir do iterável. A variável temporária recebe, a cada repetição, o próximo valor produzido pelo iterador.
@@ -200,12 +196,12 @@ for i in colecao:
 
 O `for` também pode ser utilizado com a função `range(x)` para repetir uma execução um número x de vezes. A contagem do `range` começa em 0 e vai até 1 valor abaixo de x.
 
-#### Controle de Fluxo (continue e break)
+### Controle de Fluxo (continue e break)
 
 - **continue:** Faz com que o loop ignore o resto do código daquela repetição específica e pule direto para a próxima execução do ciclo.
 - **break:** Quebra e encerra o loop imediatamente, não importando se a condição original ainda é verdadeira.
 
-### 12. Funções
+## Funções
 
 Funções são blocos de código criados para otimizar o desenvolvimento de sistemas, permitindo a reutilização de trechos de código e evitando repetições.
 
