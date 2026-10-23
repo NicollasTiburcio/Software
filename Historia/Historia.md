@@ -1,4 +1,4 @@
-## Introdução
+# História dos Computadores
 
 Ao longo da história humana, a necessidade de contar esteve presente na rotina da sociedade. Registrava-se o controle de rebanhos, o estoque de colheitas, o peso de metais e o volume de trocas comerciais. Para acelerar esses processos, surgiram os primeiros métodos manuais de auxílio ao cálculo, como o ábaco.
 

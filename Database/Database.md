@@ -1,3 +1,5 @@
+# Bancos de Dados
+
 Um banco de dados (do inglês *database*) é uma coleção organizada de dados relacionados entre si, guardada em tabelas ou documentos, preparada para ser consultada e atualizada com facilidade.
 
 Quase toda organização utiliza bancos de dados:
