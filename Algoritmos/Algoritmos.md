@@ -27,7 +27,7 @@ Em Python, tudo é um objeto. Não existem tipos primitivos puros, com tamanho f
 
 ### Estruturas Compostas
 
-Estruturas de Dados (também conhecidas como variáveis compostas) são variáveis que, em vez de armazenar apenas 1 valor em 1 endereço, armazenam múltiplos valores em uma sequência de endereços. É como a diferença entre uma casa e um edifício.
+Estruturas de Dados (também conhecidas como variáveis compostas) são estruturas que, em vez de representar apenas um valor individual, permitem organizar e armazenar múltiplos valores na memória. É como a diferença entre uma casa e um edifício.
 
 Nas estruturas de dados básicas, como os vetores, o computador reserva uma parte da memória RAM, dividida em subespaços sequenciais. Esse modelo garante desempenho por meio da previsibilidade das posições, a partir da posição inicial e do índice desejado. Pense que o processador só precisa identificar o endereço inicial da estrutura e somá-lo ao índice, que, por sua vez, é multiplicado pelo tamanho do tipo de dado (Endereço + Índice × Tipo de Dado).
 
@@ -37,3 +37,9 @@ Essas estruturas podem ser classificadas em dois tipos:
 
 - Estruturas Homogêneas: são estruturas que guardam apenas o mesmo tipo de dado. Ex.: arrays e matrizes.
 - Estruturas Heterogêneas: são estruturas que permitem armazenar vários tipos de dados. Ex.: listas e tuplas.
+
+### Consolidação
+- *O que é a memória RAM:* A memória RAM é estruturada de forma linear e sequencial, contendo posições de memória identificadas por seu endereço.
+    - *Capacidade das posições:* Cada endereço identifica uma posição de memória capaz de armazenar 1 byte (8 bits) de informação.
+- *O que são variáveis:* Variáveis são identificadores para espaços de armazenamento na memória, nos quais valores podem ser armazenados e manipulados.
+- *Como os tipos de dados ocupam espaço na memória:* Os tipos de dados determinam como os valores são representados em formato binário e a quantidade de bytes necessária para armazená-los. Quando armazenados diretamente, os valores de tipos primitivos ocupam posições contíguas na memória. O espaço ocupado pode ser fixo ou variável, dependendo do tipo de dado.
