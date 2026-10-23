@@ -101,9 +101,11 @@ del lista[1]                 # ["Ana", "Julia"]
 print(lista)
 ```
 
-### Introdução às funções print() e type()
+### Introdução às funções
 
 Para exibir um valor na tela, usamos `print()`. Para checar o tipo de um dado, usamos `type()`, preenchendo-a com a variável ou valor que se quer consultar.
+
+Código:
 
 ```python
 idade = 22
@@ -116,6 +118,25 @@ Saída:
 ```
 22
 <class 'int'>
+```
+
+Para receber dados digitados pelo usuário, utilizamos `input()`. Essa função captura o valor informado na forma de uma string, que pode ser armazenada em uma variável e convertida em outros tipos de dados, quando compatível.
+
+```python
+nome = input("Digite seu nome: ")
+idade = input("Digite sua idade: ")
+
+print(nome)
+print(type(idade))
+```
+
+Exemplo de execução:
+
+```
+Digite seu nome: João
+Digite sua idade: 22
+João
+<class 'str'>
 ```
 
 ## Operadores Aritméticos e Ordem de Precedência
