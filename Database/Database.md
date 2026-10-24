@@ -212,6 +212,85 @@ Cada extremidade possui dois símbolos adjacentes:
 
 ![Modelo ER construído](imagens/ER1.png)
 
+## Normalização de bancos de dados
+
+A normalização de bancos de dados relacionais foi introduzida por Edgar F. Codd com o objetivo de eliminar redundâncias desnecessárias e prevenir anomalias no processo de CRUD. As formas normais são aplicadas de maneira sequencial e cumulativa: para que uma tabela atinja uma determinada forma normal, ela deve obrigatoriamente satisfazer todos os requisitos das formas anteriores.
+
+Estruturas inadequadas podem gerar problemas como:
+- **Anomalia de inserção:** Ocorre quando não é possível registrar determinada informação sem fornecer outra que não deveria ser necessária.
+    - *Ex.: Não conseguir cadastrar um novo livro na biblioteca sem informar um aluno que o tenha emprestado.*
+- **Anomalia de atualização:** Ocorre quando uma mesma informação aparece em múltiplos registros e precisa ser alterada em todos eles para manter a consistência.
+    - *Ex.: O nome de um aluno aparece em vários registros de empréstimos. Caso seja corrigido, será necessário atualizar todos eles para evitar informações divergentes.*
+- **Anomalia de exclusão:** Ocorre quando a remoção de um registro provoca a perda indesejada de outras informações.
+    - *Ex.: Ao excluir o único registro de empréstimo de determinado livro, suas informações cadastrais também são perdidas, mesmo que o livro continue pertencendo à biblioteca.*
+
+### 1. Primeira Forma Normal (FN1)
+
+A FN1 estabelece que todos os atributos de uma tabela devem ser atômicos (indivisíveis), e a tabela deve possuir uma Primary Key.
+
+Um valor atômico é um valor tratado como unidade individual dentro do modelo. Por exemplo: "João Silva" é um valor composto ("João" + "Silva"), que poderia ser dividido em nome e sobrenome, mas essa divisão não é necessariamente necessária. Por outro lado, em uma tabela de produtos, uma lista com vários produtos já é uma violação de atomicidade, pois são vários elementos distintos (sem unidade entre si) armazenados na mesma coluna.
+
+Essa regra elimina:
+- **Atributos multivalorados**
+- **Atributos compostos ou aninhados**
+
+**Por que usar**
+
+A 1FN permite organizar os registros de maneira que cada ocorrência de um atributo multivalorado (atributo com vários valores) possa ser identificada, consultada e manipulada individualmente.
+
+Sua aplicação ajuda a evitar problemas como:
+- Dificuldade para consultar valores armazenados conjuntamente em uma célula.
+- Necessidade de manipular listas internas para adicionar, alterar ou remover um elemento.
+- Dificuldade para estabelecer relacionamentos e restrições sobre os elementos individuais.
+
+**Como aplicar**
+
+Considere uma biblioteca em que um aluno pode emprestar vários exemplares de livros em uma mesma operação.
+
+| EmprestimoID | MatriculaAluno | NomeAluno | Exemplares | DataEmprestimo |
+|---|---|---|---|---|
+| 101 | A001 | João | EX10, EX11 | 20/10/2026 |
+| 102 | A002 | Maria | EX12 | 21/10/2026 |
+
+*Antes da normalização*
+
+Observe que o atributo `Exemplares` armazena múltiplos códigos em uma única célula, apesar de cada código identificar um exemplar independente.
+
+Para aplicar a 1FN, devemos:
+
+1. Identificar os atributos que armazenam múltiplos valores independentes.
+
+2. Representar individualmente as ocorrências desses valores, criando registros ou relações apropriadas.
+
+3. Garantir que cada registro possa ser identificado de maneira única, utilizando uma chave adequada.
+
+| EmprestimoID | CodigoExemplar | MatriculaAluno | NomeAluno | DataEmprestimo |
+|---|---|---|---|---|
+| 101 | EX10 | A001 | João | 20/10/2026 |
+| 101 | EX11 | A001 | João | 20/10/2026 |
+| 102 | EX12 | A002 | Maria | 21/10/2026 |
+
+*Após a normalização*
+
+Agora, cada linha representa um exemplar associado a uma operação de empréstimo, e o atributo `CodigoExemplar` contém apenas um código por registro.
+
+Considerando que um exemplar não pode aparecer duas vezes na mesma operação, podemos utilizar a chave primária composta (`EmprestimoID, CodigoExemplar`) para identificar cada linha.
+
+**Dicas gerais**
+
+- **Atomicidade:** Um valor não precisa ser literalmente indivisível. A interpretação depende do domínio e dos requisitos do modelo.
+
+- **Grupos repetitivos:** Colunas como `Telefone1`, `Telefone2` e `Telefone3` podem indicar uma modelagem inadequada, merecendo uma análise sobre a necessidade de representar cada ocorrência separadamente.
+
+- **Identificação dos registros:** A definição de uma chave primária é uma prática importante na implementação de tabelas, mas não deve ser confundida com o requisito de atomicidade.
+
+- **Redundância:** A 1FN não elimina todas as informações repetidas. Outras formas normais analisam as dependências entre os atributos.
+
+### 2. Segunda Forma Normal (FN2)
+
+### 3. Terceira Forma Normal (FN3)
+
+
 ## SQL
 
 ### Tipos de dados

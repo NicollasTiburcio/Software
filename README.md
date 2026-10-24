@@ -19,34 +19,34 @@ Para navegar pelos materiais, acesse o [site publicado pelo GitHub Pages](SITE_U
 
 ## Estrutura do repositório
 
-```text
+```Text
 /
-├── README.md
-├── index.md
-├── _config.yml
 ├── Algoritmos/
+│   ├── imagens/
 │   ├── Algoritmos.md
-│   ├── atividades.md
-│   └── imagens/
-├── Logica/
-│   ├── Logica.md
-│   ├── atividades.md
-│   └── imagens/
-├── Python/
-│   ├── Python.md
-│   └── imagens/
-├── POO/
-│   ├── POO.md
-│   └── imagens/
-├── Database/
-│   ├── Database.md
-│   └── imagens/
+│   └── atividades.md
 ├── ArquiteturaComputadores/
-│   ├── ArquiteturaComputadores.md
-│   └── imagens/
-└── Historia/
-    ├── Historia.md
-    └── imagens/
+│   ├── imagens/
+│   └── ArquiteturaComputadores.md
+├── Database/
+│   ├── imagens/
+│   └── Database.md
+├── Historia/
+│   ├── imagens/
+│   └── Historia.md
+├── Logica/
+│   ├── imagens/
+│   ├── atividades.md
+│   └── Logica.md
+├── POO/
+│   ├── imagens/
+│   └── POO.md
+├── Python/
+│   ├── imagens/
+│   └── Python.md
+├── README.md
+├── _config.yml
+└── index.md
 ```
 
 Cada disciplina possui sua própria pasta. As imagens utilizadas nas apostilas ficam, quando existentes, na subpasta `imagens/`.
