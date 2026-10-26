@@ -1,6 +1,6 @@
 ---
 layout: base
-title: Engenharia de Software
+title: Index
 ---
 
 # Engenharia de Software

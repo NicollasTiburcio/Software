@@ -203,3 +203,43 @@ Ao elaborar algoritmos, devemos considerar os cenários em que serão aplicados.
 - **Pior cenário:** A análise de desempenho foca principalmente nas condições menos favoráveis de entrada, buscando maior garantia de desempenho por meio da definição de um limite matemático para o número de operações necessárias.
 
 ### Complexidade Espacial
+
+A eficiência de um algoritmo vai além da quantidade de operações, envolvendo também a quantidade de memória necessária para executá-las. A complexidade espacial é a métrica usada para avaliar o consumo de memória que um algoritmo exige em função do tamanho da entrada `n`.
+
+Para analisar esse impacto, é preciso avaliar o consumo em duas frentes:
+
+- **Espaço de entrada:** A memória necessária para armazenar os dados brutos recebidos pelo programa.
+- **Espaço auxiliar:** A memória extra alocada pelo algoritmo durante sua execução para criar variáveis, estruturas intermediárias ou gerenciar o fluxo de controle.
+
+**Classes de complexidade espacial**
+
+Existem diferentes classes para medir a complexidade espacial, sendo elas:
+
+- **`O(1)` - Espaço constante:** O algoritmo utiliza apenas um número fixo de variáveis locais para realizar um processamento, tendo consumo de memória adicional fixo, não dependente da entrada `n`.
+    - **Exemplo:** Calcular a soma de todos os números de uma lista usando uma variável acumuladora (`total += numero`).
+
+- **`O(n)` - Espaço linear:** A quantidade de memória auxiliar necessária cresce em proporção direta ao tamanho da entrada `n`.
+    - **Exemplo:** Criar uma nova lista para armazenar uma cópia ou versão transformada dos `n` elementos da lista original: `lista_dobrada = [x * 2 for x in lista]`.
+
+Quando analisamos o espaço auxiliar, classificamos apenas a memória adicional utilizada pelo algoritmo, desconsiderando a memória necessária para armazenar os dados de entrada. Por isso, é importante distinguir essa análise da complexidade espacial total.
+
+**Recursividade**
+
+A recursividade é uma técnica em que uma função chama a si mesma para quebrar um grande problema em problemas menores, até atingir uma condição explícita de parada.
+
+Um algoritmo recursivo só é válido se tiver duas partes:
+
+- **Caso-base:** A condição de parada, que retorna um valor direto, sem fazer novas chamadas.
+- **Passo recursivo:** A etapa em que a função divide o problema chamando a si mesma com um argumento reduzido, aproximando-se do caso-base.
+
+**Impacto na memória**
+
+A escolha entre uma solução iterativa (loops) e uma solução recursiva tem impacto direto na memória RAM. A cada chamada recursiva, o sistema aloca recursos na memória para uma nova instância da função, empilhando variáveis locais e o endereço de retorno da chamada anterior na estrutura chamada `call stack` (pilha de chamadas). Em suma, cada chamada recursiva cria um novo contexto de execução, acumulando memória até que o caso-base seja atingido e as chamadas comecem a retornar.
+
+Por esse motivo, uma solução iterativa que utiliza apenas uma quantidade fixa de variáveis pode manter espaço auxiliar constante (`O(1)`), enquanto uma implementação recursiva equivalente pode exigir espaço linear (`O(n)`) devido ao empilhamento das chamadas. Se a profundidade da recursão for muito elevada, o programa pode atingir o limite de chamadas permitido pelo interpretador ou esgotar a memória disponível para a pilha, provocando um erro de execução.
+
+### Tempo x espaço (trade-off)
+
+É comum precisar escolher entre otimizar o tempo ou o espaço. Estruturas como dicionários podem consumir grandes volumes de memória para garantir buscas em tempo constante (`O(1)`), sacrificando espaço em troca de velocidade.
+
+Por outro lado, quando a memória é um recurso crítico, em vez de manter estruturas auxiliares armazenadas, os dados são calculados no momento em que são gerados, custando mais CPU para processar, mas reduzindo o custo em memória.
