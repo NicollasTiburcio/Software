@@ -162,3 +162,44 @@ print(alunos)             # Saída: {'João': 18, 'Julia': 20, 'Thiago': 33}
 |---|---|---|---|
 | `len()` | Retorna a quantidade de pares chave-valor | `len({"A": 10, "B": 20})` | `2` |
 | `dict()` | Cria um dicionário a partir de pares chave-valor | `dict([("A", 10), ("B", 20)])` | `{'A': 10, 'B': 20}` |
+
+## Desempenho de Algoritmos
+
+Ao desenvolver um algoritmo, precisamos avaliar o quão eficiente ele é ao processar volumes crescentes de dados. Essa eficiência pode ser avaliada sob duas perspectivas:
+
+1. **Complexidade temporal:** Quanto tempo (ou quantas operações) o algoritmo leva para ser executado.
+2. **Complexidade espacial:** Quanta memória RAM o algoritmo exige durante sua execução.
+
+### Complexidade temporal
+
+Por mais que possa parecer natural medir a eficiência pelo tempo gasto, como 0,5 segundo de execução, essa medição não é precisa, pois envolve vários fatores externos ao algoritmo, como:
+
+- **Linguagem de programação:** Uma linguagem compilada executa as instruções mais rapidamente do que uma linguagem interpretada.
+- **Carga do sistema:** Programas executados em segundo plano no momento do teste interferem diretamente no tempo de execução do algoritmo.
+- **Hardware:** Processadores mais rápidos executam o mesmo código em menos tempo.
+- **Tamanho da entrada:** Um algoritmo pode apresentar excelente desempenho com um baixo volume de dados, mas tornar-se muito lento com um alto volume de dados.
+
+Devido a esses fatores, devemos desvincular a medição da eficiência do hardware e passar a medir o número de operações que o algoritmo realiza conforme o tamanho da entrada cresce.
+
+**Tamanho da entrada (`n`) e função `f(n)`**
+
+O tamanho da entrada é representado pela variável `n`. O desempenho do algoritmo é avaliado pelo crescimento do número de operações, representado por `f(n)`, em função do aumento de `n`.
+
+**Busca sequencial e acesso direto**
+
+Há basicamente duas formas distintas de realizar operações em uma estrutura com `n` elementos:
+
+- **Acesso direto:** Os elementos são acessados diretamente por meio de uma única operação matemática, permitindo acessar qualquer dado independentemente do tamanho da estrutura, mantendo um tempo constante.
+    - **Exemplo:** Acessar um vetor com 3 ou 30 elementos não afeta o desempenho, pois todos os elementos são acessados por meio de seus índices, mantendo o mesmo tempo de execução. `vetor[indice]`
+
+- **Busca sequencial:** Para saber se um valor está na estrutura, os itens são percorridos individualmente, do primeiro até encontrar o valor desejado ou chegar ao último. À medida que `n` cresce, podem ser necessárias mais operações.
+    - **Exemplo:** Para verificar se o elemento `x` está na lista `y`, precisamos verificar cada item individualmente até encontrá-lo ou chegar ao final da lista. `for i in lista`
+
+**Melhor cenário x pior cenário**
+
+Ao elaborar algoritmos, devemos considerar os cenários em que serão aplicados. Os principais são:
+
+- **Melhor cenário:** A análise desse cenário descreve o desempenho do algoritmo sob as condições mais favoráveis de entrada, considerando a quantidade mínima de operações necessárias para concluir uma tarefa. Não é uma boa métrica isoladamente, pois dificilmente representa todas as situações de uso.
+- **Pior cenário:** A análise de desempenho foca principalmente nas condições menos favoráveis de entrada, buscando maior garantia de desempenho por meio da definição de um limite matemático para o número de operações necessárias.
+
+### Complexidade Espacial
