@@ -224,7 +224,7 @@ Estruturas inadequadas podem gerar problemas como:
 - **Anomalia de exclusão:** Ocorre quando a remoção de um registro provoca a perda indesejada de outras informações.
     - *Ex.: Ao excluir o único registro de empréstimo de determinado livro, suas informações cadastrais também são perdidas, mesmo que o livro continue pertencendo à biblioteca.*
 
-### 1. Primeira Forma Normal (FN1)
+### Primeira Forma Normal (FN1)
 
 A FN1 estabelece que todos os atributos de uma tabela devem ser atômicos (indivisíveis), e a tabela deve possuir uma Primary Key.
 
@@ -286,9 +286,82 @@ Considerando que um exemplar não pode aparecer duas vezes na mesma operação, 
 
 - **Redundância:** A 1FN não elimina todas as informações repetidas. Outras formas normais analisam as dependências entre os atributos.
 
-### 2. Segunda Forma Normal (FN2)
+### Segunda Forma Normal (FN2)
 
-### 3. Terceira Forma Normal (FN3)
+A FN2 estabelece que uma tabela deve estar na FN1 e não possuir dependências parciais. Isso significa que os atributos não-chave devem depender da chave candidata em sua totalidade, e não apenas de parte dela.
+
+Uma dependência parcial ocorre quando um atributo não-chave depende de apenas uma parte de uma chave candidata composta (formada por dois ou mais atributos).
+
+Essa regra elimina:
+- **Dependências parciais:** Atributos não-chave que dependem de apenas parte de uma chave composta.
+- **Redundâncias associadas:** Repetição de informações que são determinadas por apenas uma parte da chave.
+
+**Por que usar**
+
+A FN2 permite separar informações que pertencem a diferentes entidades ou operações, evitando que atributos sejam repetidos desnecessariamente em registros associados.
+
+Sua aplicação ajuda a evitar problemas como:
+- Repetição de informações referentes à mesma operação em múltiplos registros.
+- Necessidade de atualizar o mesmo dado em diversas linhas.
+- Dificuldade para cadastrar informações sem depender da existência de outros registros associados.
+
+**Como aplicar**
+
+Considere a tabela de empréstimos obtida após a aplicação da FN1:
+
+| EmprestimoID | CodigoExemplar | MatriculaAluno | NomeAluno | DataEmprestimo |
+|---|---|---|---|---|
+| 101 | EX10 | A001 | João | 20/10/2026 |
+| 101 | EX11 | A001 | João | 20/10/2026 |
+| 102 | EX12 | A002 | Maria | 21/10/2026 |
+
+*Antes da normalização*
+
+Observe que a chave primária composta (`EmprestimoID`, `CodigoExemplar`) identifica cada exemplar associado a uma operação de empréstimo.
+
+Entretanto, os atributos `MatriculaAluno`, `NomeAluno` e `DataEmprestimo` dependem apenas de `EmprestimoID`, pois são informações referentes à operação, independentemente de quantos exemplares estejam associados a ela.
+
+Isso caracteriza uma dependência parcial, pois esses atributos não dependem da chave composta em sua totalidade.
+
+Para aplicar a FN2, devemos:
+
+1. Identificar as chaves candidatas compostas e os atributos não-chave que dependem apenas de parte delas.
+
+2. Separar os atributos parcialmente dependentes em tabelas próprias, utilizando os atributos que os determinam como identificadores.
+
+3. Estabelecer os relacionamentos entre as tabelas por meio de chaves estrangeiras.
+
+**Tabela Emprestimos**
+
+| EmprestimoID (PK) | MatriculaAluno | NomeAluno | DataEmprestimo |
+|---|---|---|---|
+| 101 | A001 | João | 20/10/2026 |
+| 102 | A002 | Maria | 21/10/2026 |
+
+**Tabela ItensEmprestimo**
+
+| EmprestimoID (PK/FK) | CodigoExemplar (PK/FK) |
+|---|---|
+| 101 | EX10 |
+| 101 | EX11 |
+| 102 | EX12 |
+
+*Após a normalização*
+
+Agora, a tabela `Emprestimos` armazena as informações de cada operação, enquanto `ItensEmprestimo` registra individualmente os exemplares associados a ela.
+
+A tabela `Emprestimos` utiliza `EmprestimoID` como chave primária. Já `ItensEmprestimo` mantém a chave composta (`EmprestimoID`, `CodigoExemplar`), onde ambos os atributos também atuam como chaves estrangeiras, referenciando suas respectivas tabelas.
+
+Dessa forma, os dados da operação deixam de ser repetidos para cada exemplar emprestado.
+
+**Dicas gerais**
+
+- **Chaves compostas:** A FN2 exige atenção às dependências de atributos não-chave em relação a partes das chaves candidatas compostas.
+- **Chaves simples:** Uma tabela cujas chaves candidatas são todas simples já satisfaz a FN2, desde que esteja na FN1.
+- **Dependência funcional:** Um atributo depende funcionalmente de outro quando o valor do segundo determina unicamente o valor do primeiro, conforme as regras do negócio.
+- **Redundância:** A FN2 não elimina todas as redundâncias. Dependências entre atributos não-chave ainda podem existir e serão analisadas na FN3.
+
+### Terceira Forma Normal (FN3)
 
 
 ## SQL
