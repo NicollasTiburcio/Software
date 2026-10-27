@@ -343,6 +343,7 @@ Para aplicar a 2FN, devemos:
 3. Estabelecer as chaves primárias e estrangeiras necessárias para preservar os relacionamentos entre as tabelas.
 
 **Alunos**
+*PK: `MatriculaAluno`*
 
 | MatriculaAluno | CPF | Nome |
 |---|---|---|
@@ -350,9 +351,8 @@ Para aplicar a 2FN, devemos:
 | 1002 | 22222222222 | João Souza |
 | 1003 | 33333333333 | Maria Lima |
 
-*PK: `MatriculaAluno`*
-
 **Livros**
+*PK: `CodigoLivro`*
 
 | CodigoLivro | Titulo | Autor |
 |---|---|---|
@@ -360,9 +360,8 @@ Para aplicar a 2FN, devemos:
 | 20 | O Cortiço | Aluísio Azevedo |
 | 30 | Iracema | José de Alencar |
 
-*PK: `CodigoLivro`*
-
 **Emprestimos**
+*PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 | MatriculaAluno | CodigoLivro | CodigoExemplar | DataEmprestimo | DataDevolucao |
 |---|---|---|---|---|
@@ -371,8 +370,6 @@ Para aplicar a 2FN, devemos:
 | 1002 | 10 | 2 | 2026-03-06 | NULL |
 | 1003 | 20 | 1 | 2026-03-07 | 2026-03-15 |
 | 1003 | 30 | 1 | 2026-03-09 | NULL |
-
-*PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 *Após a normalização*
 
@@ -415,6 +412,7 @@ Sua aplicação ajuda a evitar problemas como:
 Considere as tabelas obtidas após a aplicação da 2FN:
 
 **Alunos**
+*PK: `MatriculaAluno`*
 
 | MatriculaAluno | CPF | Nome |
 |---|---|---|
@@ -422,9 +420,8 @@ Considere as tabelas obtidas após a aplicação da 2FN:
 | 1002 | 22222222222 | João Souza |
 | 1003 | 33333333333 | Maria Lima |
 
-*PK: `MatriculaAluno`*
-
 **Livros**
+*PK: `CodigoLivro`*
 
 | CodigoLivro | Titulo | Autor |
 |---|---|---|
@@ -432,9 +429,8 @@ Considere as tabelas obtidas após a aplicação da 2FN:
 | 20 | O Cortiço | Aluísio Azevedo |
 | 30 | Iracema | José de Alencar |
 
-*PK: `CodigoLivro`*
-
 **Emprestimos**
+*PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 | MatriculaAluno | CodigoLivro | CodigoExemplar | DataEmprestimo | DataDevolucao |
 |---|---|---|---|---|
@@ -443,8 +439,6 @@ Considere as tabelas obtidas após a aplicação da 2FN:
 | 1002 | 10 | 2 | 2026-03-06 | NULL |
 | 1003 | 20 | 1 | 2026-03-07 | 2026-03-15 |
 | 1003 | 30 | 1 | 2026-03-09 | NULL |
-
-*PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 *Antes da normalização*
 
