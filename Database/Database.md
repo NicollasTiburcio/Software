@@ -390,8 +390,101 @@ A tabela `Emprestimos` mantém a chave primária composta, mas deixa de armazena
 
 - **Redundância:** A 2FN elimina redundâncias decorrentes de dependências parciais, mas não necessariamente todas as redundâncias existentes. A 3FN analisa as dependências transitivas entre atributos.
 
-### Terceira Forma Normal (FN3)
+### Terceira Forma Normal (3FN)
 
+A 3FN estabelece que uma tabela deve estar na 2FN e não possuir dependências transitivas entre atributos não-chave.
+
+Uma dependência transitiva ocorre quando um atributo não-chave depende de outro atributo não-chave que, por sua vez, depende da chave primária. Dessa forma, a informação é determinada indiretamente pela chave, por meio de outro atributo.
+
+Essa regra elimina:
+- **Dependências transitivas**
+- **Redundâncias decorrentes dessas dependências**
+
+**Por que usar**
+
+A 3FN permite organizar os registros de maneira que cada informação seja armazenada na tabela correspondente à entidade da qual realmente depende, evitando dependências indiretas entre atributos.
+
+Sua aplicação ajuda a evitar problemas como:
+- Repetição desnecessária de informações em diferentes registros.
+- Necessidade de atualizar dados relacionados em várias linhas.
+- Inconsistências causadas por alterações realizadas em apenas parte dos registros.
+- Dificuldade para inserir ou remover informações sem afetar dados de outras entidades.
+
+**Como aplicar**
+
+Considere as tabelas obtidas após a aplicação da 2FN:
+
+**Alunos**
+
+| MatriculaAluno | CPF | Nome |
+|---|---|---|
+| 1001 | 11111111111 | Ana Silva |
+| 1002 | 22222222222 | João Souza |
+| 1003 | 33333333333 | Maria Lima |
+
+*PK: `MatriculaAluno`*
+
+**Livros**
+
+| CodigoLivro | Titulo | Autor |
+|---|---|---|
+| 10 | Dom Casmurro | Machado de Assis |
+| 20 | O Cortiço | Aluísio Azevedo |
+| 30 | Iracema | José de Alencar |
+
+*PK: `CodigoLivro`*
+
+**Emprestimos**
+
+| MatriculaAluno | CodigoLivro | CodigoExemplar | DataEmprestimo | DataDevolucao |
+|---|---|---|---|---|
+| 1001 | 10 | 1 | 2026-03-01 | 2026-03-10 |
+| 1001 | 20 | 2 | 2026-03-05 | NULL |
+| 1002 | 10 | 2 | 2026-03-06 | NULL |
+| 1003 | 20 | 1 | 2026-03-07 | 2026-03-15 |
+| 1003 | 30 | 1 | 2026-03-09 | NULL |
+
+*PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
+
+*Antes da normalização*
+
+Observe que, na tabela `Alunos`, os atributos `CPF` e `Nome` dependem diretamente de `MatriculaAluno`. Da mesma forma, na tabela `Livros`, os atributos `Titulo` e `Autor` dependem diretamente de `CodigoLivro`.
+
+Já na tabela `Emprestimos`, o atributo `DataDevolucao` depende da chave primária composta, não existindo outro atributo não-chave que determine seu valor.
+
+Portanto, nenhuma das três tabelas apresenta dependências transitivas que violem a 3FN, pois não existem atributos não-chave determinados indiretamente por outros atributos não-chave.
+
+Entretanto, essas dependências poderiam existir caso as tabelas armazenassem informações adicionais. Por exemplo:
+
+- **Alunos:** Se a tabela possuísse `CodigoCurso` e `NomeCurso`, teríamos uma dependência transitiva, pois `NomeCurso` dependeria de `CodigoCurso`, que, por sua vez, dependeria de `MatriculaAluno`.
+
+- **Livros:** Se a tabela possuísse `CodigoEditora` e `NomeEditora`, teríamos uma dependência transitiva, pois `NomeEditora` dependeria de `CodigoEditora`, que, por sua vez, dependeria de `CodigoLivro`.
+
+- **Emprestimos:** Se a tabela possuísse `CodigoBibliotecario` e `NomeBibliotecario`, teríamos uma dependência transitiva, pois `NomeBibliotecario` dependeria de `CodigoBibliotecario`, que, por sua vez, dependeria da chave primária composta do empréstimo.
+
+Esses exemplos demonstram como a inclusão de atributos relacionados a outras entidades poderia introduzir dependências transitivas, exigindo uma nova decomposição das tabelas.
+
+Para aplicar a 3FN, devemos:
+
+1. Identificar os atributos não-chave que dependem funcionalmente de outros atributos não-chave.
+
+2. Caso existam dependências transitivas que violem a 3FN, separar os atributos envolvidos em novas tabelas, agrupando-os de acordo com suas dependências.
+
+3. Estabelecer as chaves primárias e estrangeiras necessárias para preservar os relacionamentos entre as tabelas.
+
+Como as tabelas `Alunos`, `Livros` e `Emprestimos` já atendem aos requisitos da 3FN, nenhuma nova decomposição é necessária.
+
+Dessa forma, as três tabelas permanecem com a mesma estrutura obtida após a aplicação da 2FN, demonstrando que uma tabela pode atender a uma forma normal sem precisar sofrer novas alterações.
+
+**Dicas gerais**
+
+- **Dependência transitiva:** Ocorre quando um atributo não-chave depende de outro atributo não-chave, estabelecendo uma dependência indireta em relação à chave.
+
+- **Dependência funcional:** A análise deve considerar quais atributos determinam outros atributos, e não apenas a existência de valores repetidos.
+
+- **Chaves estrangeiras:** A separação das informações em novas tabelas permite eliminar dependências transitivas sem perder os relacionamentos entre os registros.
+
+- **Normalização:** Uma tabela pode já atender à 3FN após a aplicação da 2FN, caso não apresente dependências transitivas que violem essa forma normal.
 
 ## SQL
 
