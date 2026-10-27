@@ -343,6 +343,7 @@ Para aplicar a 2FN, devemos:
 3. Estabelecer as chaves primárias e estrangeiras necessárias para preservar os relacionamentos entre as tabelas.
 
 **Alunos**
+
 *PK: `MatriculaAluno`*
 
 | MatriculaAluno | CPF | Nome |
@@ -352,6 +353,7 @@ Para aplicar a 2FN, devemos:
 | 1003 | 33333333333 | Maria Lima |
 
 **Livros**
+
 *PK: `CodigoLivro`*
 
 | CodigoLivro | Titulo | Autor |
@@ -361,6 +363,7 @@ Para aplicar a 2FN, devemos:
 | 30 | Iracema | José de Alencar |
 
 **Emprestimos**
+
 *PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 | MatriculaAluno | CodigoLivro | CodigoExemplar | DataEmprestimo | DataDevolucao |
@@ -412,6 +415,7 @@ Sua aplicação ajuda a evitar problemas como:
 Considere as tabelas obtidas após a aplicação da 2FN:
 
 **Alunos**
+
 *PK: `MatriculaAluno`*
 
 | MatriculaAluno | CPF | Nome |
@@ -421,6 +425,7 @@ Considere as tabelas obtidas após a aplicação da 2FN:
 | 1003 | 33333333333 | Maria Lima |
 
 **Livros**
+
 *PK: `CodigoLivro`*
 
 | CodigoLivro | Titulo | Autor |
@@ -430,6 +435,7 @@ Considere as tabelas obtidas após a aplicação da 2FN:
 | 30 | Iracema | José de Alencar |
 
 **Emprestimos**
+
 *PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 | MatriculaAluno | CodigoLivro | CodigoExemplar | DataEmprestimo | DataDevolucao |
