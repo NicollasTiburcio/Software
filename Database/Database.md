@@ -349,6 +349,7 @@ Para aplicar a 2FN, devemos:
 | 1001 | 11111111111 | Ana Silva |
 | 1002 | 22222222222 | João Souza |
 | 1003 | 33333333333 | Maria Lima |
+
 *PK: `MatriculaAluno`*
 
 **Livros**
@@ -358,6 +359,7 @@ Para aplicar a 2FN, devemos:
 | 10 | Dom Casmurro | Machado de Assis |
 | 20 | O Cortiço | Aluísio Azevedo |
 | 30 | Iracema | José de Alencar |
+
 *PK: `CodigoLivro`*
 
 **Emprestimos**
@@ -369,6 +371,7 @@ Para aplicar a 2FN, devemos:
 | 1002 | 10 | 2 | 2026-03-06 | NULL |
 | 1003 | 20 | 1 | 2026-03-07 | 2026-03-15 |
 | 1003 | 30 | 1 | 2026-03-09 | NULL |
+
 *PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
 
 *Após a normalização*
