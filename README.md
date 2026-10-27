@@ -10,12 +10,12 @@ Para navegar pelos materiais, acesse o [site publicado pelo GitHub Pages](SITE_U
 
 ## Disciplinas disponíveis
 
-- **Lógica de Programação** — fundamentos de algoritmos e atividades.
-- **Linguagem de Programação — Python** *(em construção)*.
-- **Programação Orientada a Objetos** *(em construção)*.
-- **Banco de Dados** *(em construção)*.
 - **Arquitetura e Organização de Computadores** *(em construção)*.
+- **Banco de Dados** *(em construção)*.
 - **História dos Computadores** *(em construção)*.
+- **Linguagem de Programação — Python** *(em construção)*.
+- **Lógica de Programação** — fundamentos de algoritmos e atividades.
+- **Programação Orientada a Objetos** *(em construção)*.
 
 ## Estrutura do repositório
 
