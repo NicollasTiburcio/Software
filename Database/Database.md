@@ -486,6 +486,48 @@ Dessa forma, as três tabelas permanecem com a mesma estrutura obtida após a ap
 
 - **Normalização:** Uma tabela pode já atender à 3FN após a aplicação da 2FN, caso não apresente dependências transitivas que violem essa forma normal.
 
+### Resumo das Formas Normais
+
+| Forma Normal | Requisito Principal | O que elimina |
+|---|---|---|
+| **1FN** | Atributos atômicos | Valores multivalorados e grupos repetitivos |
+| **2FN** | 1FN + ausência de dependências parciais | Atributos não-chave que dependem de apenas parte de uma chave candidata composta |
+| **3FN** | 2FN + ausência de dependências transitivas que violem a 3FN | Dependências indiretas inadequadas entre atributos não-chave |
+
+No exemplo da biblioteca, a aplicação da 1FN permitiu representar cada empréstimo individualmente, utilizando temporariamente a chave primária composta (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`).
+
+Na 2FN, identificamos que os dados dos alunos e dos livros dependiam apenas de partes dessa chave. Para eliminar essas dependências parciais, criamos as tabelas `Alunos` e `Livros`, mantendo na tabela `Emprestimos` os atributos necessários para identificar e registrar cada empréstimo.
+
+Ao analisar a 3FN, verificamos que as três tabelas já atendiam aos seus requisitos, não sendo necessária uma nova decomposição.
+
+### Refinamento do Modelo
+
+Embora as tabelas já atendessem à 3FN, isso não significa que o modelo estivesse completamente definido. A normalização trata das dependências entre atributos, enquanto a modelagem também precisa considerar as regras de negócio, os relacionamentos e a identificação das entidades.
+
+Por esse motivo, realizamos alguns refinamentos adicionais para chegar ao modelo lógico final.
+
+**Criação da tabela Exemplares**
+
+Até então, os exemplares eram identificados diretamente na tabela `Emprestimos`, por meio de `CodigoLivro` e `CodigoExemplar`.
+
+Entretanto, um livro pode possuir vários exemplares físicos, e cada exemplar pode participar de diferentes empréstimos ao longo do tempo.
+
+Assim, criamos a tabela `Exemplares`, utilizando a chave primária composta (`CodigoLivro`, `CodigoExemplar`), para representar individualmente cada exemplar pertencente a determinado livro.
+
+Essa separação permite identificar exemplares independentemente da existência de empréstimos, inclusive aqueles que nunca foram emprestados.
+
+**Refinamento da tabela Emprestimos**
+
+Inicialmente, cada empréstimo era identificado pela combinação de quatro atributos: `MatriculaAluno`, `CodigoLivro`, `CodigoExemplar` e `DataEmprestimo`.
+
+Embora essa chave composta permitisse identificar os registros conforme as regras estabelecidas, sua utilização tornava a identificação dos empréstimos mais complexa.
+
+Por isso, introduzimos `CodigoEmprestimo` como chave primária simples, substituindo a chave composta utilizada anteriormente.
+
+Os demais atributos necessários continuam presentes, permitindo identificar o aluno, o exemplar emprestado e as datas relacionadas à operação.
+
+Essa alteração representa uma decisão de modelagem, e não uma exigência da 3FN.
+
 ## SQL
 
 ### Tipos de dados
