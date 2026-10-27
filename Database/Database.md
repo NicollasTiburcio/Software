@@ -225,6 +225,70 @@ Estruturas inadequadas podem gerar problemas como:
     - *Ex.: Ao excluir o único registro de empréstimo de determinado livro, suas informações cadastrais também são perdidas, mesmo que o livro continue pertencendo à biblioteca.*
 
 ### Primeira Forma Normal (FN1)
+### Primeira Forma Normal (FN1)
+
+A FN1 estabelece que todos os atributos de uma tabela devem ser atômicos (indivisíveis), e a tabela deve possuir uma Primary Key.
+
+Um valor atômico é um valor tratado como unidade individual dentro do modelo. Por exemplo: "João Silva" é um valor composto ("João" + "Silva"), que poderia ser dividido em nome e sobrenome, mas essa divisão não é necessariamente necessária. Por outro lado, em uma tabela de produtos, uma lista com vários produtos já é uma violação de atomicidade, pois são vários elementos distintos (sem unidade entre si) armazenados na mesma coluna.
+
+Essa regra elimina:
+- **Atributos multivalorados**
+- **Atributos compostos ou aninhados**
+
+**Por que usar**
+
+A 1FN permite organizar os registros de maneira que cada ocorrência de um atributo multivalorado (atributo com vários valores) possa ser identificada, consultada e manipulada individualmente.
+
+Sua aplicação ajuda a evitar problemas como:
+- Dificuldade para consultar valores armazenados conjuntamente em uma célula.
+- Necessidade de manipular listas internas para adicionar, alterar ou remover um elemento.
+- Dificuldade para estabelecer relacionamentos e restrições sobre os elementos individuais.
+
+**Como aplicar**
+
+Considere uma biblioteca em que um aluno pode realizar vários empréstimos de exemplares de livros.
+
+| MatriculaAluno | CPF | Nome | CodigoLivro | CodigoExemplar | Titulo | Autor | DataEmprestimo | DataDevolucao |
+|---|---|---|---|---|---|---|---|---|
+| 1001 | 11111111111 | Ana Silva | 10, 20 | 1, 2 | Dom Casmurro, O Cortiço | Machado de Assis, Aluísio Azevedo | 2026-03-01, 2026-03-05 | 2026-03-10, NULL |
+| 1002 | 22222222222 | João Souza | 10 | 2 | Dom Casmurro | Machado de Assis | 2026-03-06 | NULL |
+| 1003 | 33333333333 | Maria Lima | 20, 30 | 1, 1 | O Cortiço, Iracema | Aluísio Azevedo, José de Alencar | 2026-03-07, 2026-03-09 | 2026-03-15, NULL |
+
+*Antes da normalização*
+
+Observe que os atributos `CodigoLivro`, `CodigoExemplar`, `Titulo`, `Autor`, `DataEmprestimo` e `DataDevolucao` armazenam múltiplos valores em uma única célula nas linhas de Ana Silva e Maria Lima, apesar de cada valor representar uma ocorrência independente. A posição de cada valor indica o empréstimo ao qual ele pertence: na linha de Ana Silva, o primeiro conjunto de valores corresponde ao empréstimo do exemplar 1 do livro 10, enquanto o segundo corresponde ao exemplar 2 do livro 20. O mesmo ocorre com os exemplares dos livros 20 e 30 emprestados por Maria Lima.
+
+Para aplicar a 1FN, devemos:
+
+1. Identificar os atributos que armazenam múltiplos valores independentes.
+
+2. Representar individualmente as ocorrências desses valores, criando registros ou relações apropriadas.
+
+3. Garantir que cada registro possa ser identificado de maneira única, utilizando uma chave adequada.
+
+| MatriculaAluno | CPF | Nome | CodigoLivro | CodigoExemplar | Titulo | Autor | DataEmprestimo | DataDevolucao |
+|---|---|---|---|---|---|---|---|---|
+| 1001 | 11111111111 | Ana Silva | 10 | 1 | Dom Casmurro | Machado de Assis | 2026-03-01 | 2026-03-10 |
+| 1001 | 11111111111 | Ana Silva | 20 | 2 | O Cortiço | Aluísio Azevedo | 2026-03-05 | NULL |
+| 1002 | 22222222222 | João Souza | 10 | 2 | Dom Casmurro | Machado de Assis | 2026-03-06 | NULL |
+| 1003 | 33333333333 | Maria Lima | 20 | 1 | O Cortiço | Aluísio Azevedo | 2026-03-07 | 2026-03-15 |
+| 1003 | 33333333333 | Maria Lima | 30 | 1 | Iracema | José de Alencar | 2026-03-09 | NULL |
+
+*Após a normalização*
+
+Agora, cada linha representa um único empréstimo, e todos os atributos contêm apenas um valor por registro.
+
+Como cada empréstimo deve ser identificado de maneira única, utilizamos temporariamente a chave primária composta (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`), considerando que um aluno não pode emprestar o mesmo exemplar mais de uma vez na mesma data.
+
+**Dicas gerais**
+
+- **Atomicidade:** Um valor não precisa ser literalmente indivisível. A interpretação depende do domínio e dos requisitos do modelo.
+
+- **Grupos repetitivos:** Colunas como `Telefone1`, `Telefone2` e `Telefone3` podem indicar uma modelagem inadequada, merecendo uma análise sobre a necessidade de representar cada ocorrência separadamente.
+
+- **Identificação dos registros:** A definição de uma chave primária é uma prática importante na implementação de tabelas, mas não deve ser confundida com o requisito de atomicidade.
+
+- **Redundância:** A 1FN não elimina todas as informações repetidas. Outras formas normais analisam as dependências entre os atributos.
 
 ### Segunda Forma Normal (FN2)
 
