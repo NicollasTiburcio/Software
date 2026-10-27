@@ -202,6 +202,46 @@ Ao elaborar algoritmos, devemos considerar os cenários em que serão aplicados.
 - **Melhor cenário:** A análise desse cenário descreve o desempenho do algoritmo sob as condições mais favoráveis de entrada, considerando a quantidade mínima de operações necessárias para concluir uma tarefa. Não é uma boa métrica isoladamente, pois dificilmente representa todas as situações de uso.
 - **Pior cenário:** A análise de desempenho foca principalmente nas condições menos favoráveis de entrada, buscando maior garantia de desempenho por meio da definição de um limite matemático para o número de operações necessárias.
 
+**Experimento prático**
+
+Utilize o código abaixo para medir o tempo de execução de diferentes algoritmos. Repita os testes aumentando gradualmente o tamanho da entrada (`n`) e observe como o tempo varia.
+
+Para facilitar os experimentos, utilize a função `range(n)`, que gera uma sequência de números inteiros de `0` até `n - 1`. Essa sequência pode ser convertida em diferentes estruturas de dados utilizando as funções já estudadas.
+
+Ex: `list(range(n))` e  `tuple(range(n))`
+
+*Atenção:* Essa medição não determina a complexidade temporal de um algoritmo. Ela apenas registra o tempo real de execução, que também sofre influência do hardware, da carga do sistema e de outros fatores externos.
+
+```Python
+import time
+
+# Tamanho da entrada
+n = 100
+
+# Preparação dos dados
+lista = list(range(n))
+tupla = tuple(range(n))
+
+# Início da medição
+inicio = time.perf_counter()
+
+############
+
+# Escreva seu código aqui
+
+############
+
+# Fim da medição
+fim = time.perf_counter()
+
+# Calculando o tempo de execução
+tempo_execucao = fim - inicio
+
+print(f"Tempo de execução: {tempo_execucao:.6f} segundos")
+```
+
+Experimente diferentes valores para `n`, como 100, 10_000, 100_000 e 1_000_000, comparando os resultados obtidos.
+
 ### Complexidade Espacial
 
 A eficiência de um algoritmo vai além da quantidade de operações, envolvendo também a quantidade de memória necessária para executá-las. A complexidade espacial é a métrica usada para avaliar o consumo de memória que um algoritmo exige em função do tamanho da entrada `n`.
