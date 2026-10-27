@@ -21,6 +21,7 @@ Uma forma muito comum de armazenar e organizar dados é por meio de planilhas. E
 - **Falta de controle de acesso:** quem abre o arquivo vê e altera tudo.
 
 ![Exemplo de planilhas](imagens/planilha.jpg)
+*Exemplo de planilha*
 
 ## Sistemas de Gerenciamento de Bancos de Dados (SGBDs)
 
@@ -47,6 +48,7 @@ Os SGBDs mais comuns são:
 - Redis (NoSQL)
 
 ![Exemplo do SGBD Letos](imagens/letos.png)
+*Banco de dados Letos, antigo SQLite Studio*
 
 ## Modelagem de Bancos de Dados Relacionais
 
@@ -116,6 +118,7 @@ Fazendo o mesmo com a regra de negócio para Livro:
 De acordo com essa regra, podemos notar que o valor (min, max) dessa relação é de no mínimo 0 e no máximo 1 aluno, resultando em **(0, 1)**.
 
 ![Notação básica do DER](imagens/DER.png)
+*Exemplo básico de DER*
 
 ### Tipos de Entidades
 
@@ -144,6 +147,7 @@ Para decidir se algo deve ser mapeado como Entidade, Atributo ou Relacionamento,
 3. É uma ação ou evento que acontece várias vezes e precisa guardar histórico? Essa ação precisa registrar quando aconteceu, qual o status ou a data de devolução ao longo do tempo? Se sim, a ação deixa de ser um simples vínculo e vira uma **Entidade Associativa** (ex: `Empréstimo`, `Venda`, `Matrícula`).
 
 ![Diagrama DER com multiplas entidades](imagens/DER2.png)
+*Exemplo de DER com multiplas entidades*
 
 ### Modelo Lógico Relacional
 
@@ -211,6 +215,7 @@ Cada extremidade possui dois símbolos adjacentes:
 - A extremidade próxima à tabela Filha indica quantos registros filhos uma linha da tabela pai pode possuir (`0,N` ou `1,N`).
 
 ![Modelo ER construído](imagens/ER1.png)
+*Exemplo de modelo Lógico*
 
 ## Normalização de bancos de dados
 
@@ -224,7 +229,6 @@ Estruturas inadequadas podem gerar problemas como:
 - **Anomalia de exclusão:** Ocorre quando a remoção de um registro provoca a perda indesejada de outras informações.
     - *Ex.: Ao excluir o único registro de empréstimo de determinado livro, suas informações cadastrais também são perdidas, mesmo que o livro continue pertencendo à biblioteca.*
 
-### Primeira Forma Normal (FN1)
 ### Primeira Forma Normal (FN1)
 
 A FN1 estabelece que todos os atributos de uma tabela devem ser atômicos (indivisíveis), e a tabela deve possuir uma Primary Key.
@@ -278,7 +282,7 @@ Para aplicar a 1FN, devemos:
 
 Agora, cada linha representa um único empréstimo, e todos os atributos contêm apenas um valor por registro.
 
-Como cada empréstimo deve ser identificado de maneira única, utilizamos temporariamente a chave primária composta (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`), considerando que um aluno não pode emprestar o mesmo exemplar mais de uma vez na mesma data.
+Como cada empréstimo deve ser identificado de maneira única, utilizamos temporariamente a chave primária composta (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`).
 
 **Dicas gerais**
 
@@ -291,6 +295,97 @@ Como cada empréstimo deve ser identificado de maneira única, utilizamos tempor
 - **Redundância:** A 1FN não elimina todas as informações repetidas. Outras formas normais analisam as dependências entre os atributos.
 
 ### Segunda Forma Normal (FN2)
+
+A FN2 estabelece que uma tabela deve estar na FN1 e que todos os atributos não-chave devem depender da chave primária em sua totalidade, sem dependências parciais.
+
+Uma dependência parcial ocorre quando um atributo depende de apenas uma parte de uma chave composta, em vez de depender de todos os atributos que a constituem.
+
+Essa regra elimina:
+- **Dependências parciais**
+- **Redundâncias decorrentes dessas dependências**
+
+**Por que usar**
+
+A 2FN permite organizar os registros de maneira que os atributos sejam armazenados nas tabelas correspondentes às entidades das quais realmente dependem.
+
+Sua aplicação ajuda a evitar problemas como:
+- Repetição desnecessária de informações em diferentes registros.
+- Necessidade de atualizar o mesmo dado em várias linhas.
+- Inconsistências causadas por alterações realizadas em apenas parte dos registros.
+- Dificuldade para inserir ou remover informações sem afetar dados relacionados.
+
+**Como aplicar**
+
+Considere a tabela de empréstimos obtida após a aplicação da 1FN:
+
+| MatriculaAluno | CPF | Nome | CodigoLivro | CodigoExemplar | Titulo | Autor | DataEmprestimo | DataDevolucao |
+|---|---|---|---|---|---|---|---|---|
+| 1001 | 11111111111 | Ana Silva | 10 | 1 | Dom Casmurro | Machado de Assis | 2026-03-01 | 2026-03-10 |
+| 1001 | 11111111111 | Ana Silva | 20 | 2 | O Cortiço | Aluísio Azevedo | 2026-03-05 | NULL |
+| 1002 | 22222222222 | João Souza | 10 | 2 | Dom Casmurro | Machado de Assis | 2026-03-06 | NULL |
+| 1003 | 33333333333 | Maria Lima | 20 | 1 | O Cortiço | Aluísio Azevedo | 2026-03-07 | 2026-03-15 |
+| 1003 | 33333333333 | Maria Lima | 30 | 1 | Iracema | José de Alencar | 2026-03-09 | NULL |
+
+*Antes da normalização*
+
+Observe que a chave primária composta (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`) identifica cada empréstimo de um exemplar realizado por um aluno em determinada data.
+
+Entretanto, os atributos `CPF` e `Nome` dependem apenas de `MatriculaAluno`, enquanto `Titulo` e `Autor` dependem apenas de `CodigoLivro`, pois representam informações referentes ao aluno e ao livro, respectivamente.
+
+Isso caracteriza dependências parciais, pois esses atributos dependem apenas de partes da chave composta, e não de sua totalidade.
+
+Para aplicar a 2FN, devemos:
+
+1. Identificar os atributos que dependem parcialmente da chave primária composta.
+
+2. Separar esses atributos em novas tabelas, agrupando-os de acordo com suas dependências.
+
+3. Estabelecer as chaves primárias e estrangeiras necessárias para preservar os relacionamentos entre as tabelas.
+
+**Alunos**
+
+| MatriculaAluno | CPF | Nome |
+|---|---|---|
+| 1001 | 11111111111 | Ana Silva |
+| 1002 | 22222222222 | João Souza |
+| 1003 | 33333333333 | Maria Lima |
+*PK: `MatriculaAluno`*
+
+**Livros**
+
+| CodigoLivro | Titulo | Autor |
+|---|---|---|
+| 10 | Dom Casmurro | Machado de Assis |
+| 20 | O Cortiço | Aluísio Azevedo |
+| 30 | Iracema | José de Alencar |
+*PK: `CodigoLivro`*
+
+**Emprestimos**
+
+| MatriculaAluno | CodigoLivro | CodigoExemplar | DataEmprestimo | DataDevolucao |
+|---|---|---|---|---|
+| 1001 | 10 | 1 | 2026-03-01 | 2026-03-10 |
+| 1001 | 20 | 2 | 2026-03-05 | NULL |
+| 1002 | 10 | 2 | 2026-03-06 | NULL |
+| 1003 | 20 | 1 | 2026-03-07 | 2026-03-15 |
+| 1003 | 30 | 1 | 2026-03-09 | NULL |
+*PK composta: (`MatriculaAluno`, `CodigoLivro`, `CodigoExemplar`, `DataEmprestimo`)*
+
+*Após a normalização*
+
+Agora, os dados dos alunos e dos livros estão organizados em tabelas próprias, eliminando as dependências parciais identificadas anteriormente.
+
+A tabela `Emprestimos` mantém a chave primária composta, mas deixa de armazenar informações que dependem exclusivamente de `MatriculaAluno` ou `CodigoLivro`. Esses atributos passam a funcionar também como chaves estrangeiras, estabelecendo os relacionamentos com as tabelas `Alunos` e `Livros`.
+
+**Dicas gerais**
+
+- **Dependência parcial:** Ocorre quando um atributo não-chave depende de apenas parte de uma chave candidata composta.
+
+- **Chaves simples:** Uma tabela com chave candidata simples não apresenta dependências parciais em relação a essa chave, pois não existe uma parte menor da qual um atributo possa depender.
+
+- **Chaves estrangeiras:** A separação dos atributos não elimina os relacionamentos entre as informações. As chaves estrangeiras permitem preservar essas associações.
+
+- **Redundância:** A 2FN elimina redundâncias decorrentes de dependências parciais, mas não necessariamente todas as redundâncias existentes. A 3FN analisa as dependências transitivas entre atributos.
 
 ### Terceira Forma Normal (FN3)
 
