@@ -351,21 +351,6 @@ Para compreender a aplicação dessas classes na complexidade espacial, podemos 
 
 Quando analisamos o espaço auxiliar, classificamos apenas a memória adicional utilizada pelo algoritmo, desconsiderando a memória necessária para armazenar os dados de entrada. Por isso, é importante distinguir essa análise da complexidade espacial total.
 
-**Recursividade**
-
-A recursividade é uma técnica em que uma função chama a si mesma para quebrar um grande problema em problemas menores, até atingir uma condição explícita de parada.
-
-Um algoritmo recursivo só é válido se tiver duas partes:
-
-- **Caso-base:** A condição de parada, que retorna um valor direto, sem fazer novas chamadas.
-- **Passo recursivo:** A etapa em que a função divide o problema chamando a si mesma com um argumento reduzido, aproximando-se do caso-base.
-
-**Impacto na memória**
-
-A escolha entre uma solução iterativa (loops) e uma solução recursiva tem impacto direto na memória RAM. A cada chamada recursiva, o sistema aloca recursos na memória para uma nova instância da função, empilhando variáveis locais e o endereço de retorno da chamada anterior na estrutura chamada `call stack` (pilha de chamadas). Em suma, cada chamada recursiva cria um novo contexto de execução, acumulando memória até que o caso-base seja atingido e as chamadas comecem a retornar.
-
-Por esse motivo, uma solução iterativa que utiliza apenas uma quantidade fixa de variáveis pode manter espaço auxiliar constante (`O(1)`), enquanto uma implementação recursiva equivalente pode exigir espaço linear (`O(n)`) devido ao empilhamento das chamadas. Se a profundidade da recursão for muito elevada, o programa pode atingir o limite de chamadas permitido pelo interpretador ou esgotar a memória disponível para a pilha, provocando um erro de execução.
-
 **Experimento prático**
 
 Utilize o código abaixo para observar a quantidade de memória alocada durante a execução de diferentes algoritmos. Repita os testes aumentando gradualmente o tamanho da entrada (`n`) e observe como o consumo de memória varia.
@@ -402,6 +387,21 @@ print(f"Pico de memória: {memoria_pico / 1024 ** 2: .6f} MiB")
 ```
 
 Experimente diferentes valores para `n`, como `100`, `1_000` e `10_000`, comparando os resultados obtidos.
+
+**Recursividade**
+
+A recursividade é uma técnica em que uma função chama a si mesma para quebrar um grande problema em problemas menores, até atingir uma condição explícita de parada.
+
+Um algoritmo recursivo só é válido se tiver duas partes:
+
+- **Caso-base:** A condição de parada, que retorna um valor direto, sem fazer novas chamadas.
+- **Passo recursivo:** A etapa em que a função divide o problema chamando a si mesma com um argumento reduzido, aproximando-se do caso-base.
+
+**Impacto na memória**
+
+A escolha entre uma solução iterativa (loops) e uma solução recursiva tem impacto direto na memória RAM. A cada chamada recursiva, o sistema aloca recursos na memória para uma nova instância da função, empilhando variáveis locais e o endereço de retorno da chamada anterior na estrutura chamada `call stack` (pilha de chamadas). Em suma, cada chamada recursiva cria um novo contexto de execução, acumulando memória até que o caso-base seja atingido e as chamadas comecem a retornar.
+
+Por esse motivo, uma solução iterativa que utiliza apenas uma quantidade fixa de variáveis pode manter espaço auxiliar constante (`O(1)`), enquanto uma implementação recursiva equivalente pode exigir espaço linear (`O(n)`) devido ao empilhamento das chamadas. Se a profundidade da recursão for muito elevada, o programa pode atingir o limite de chamadas permitido pelo interpretador ou esgotar a memória disponível para a pilha, provocando um erro de execução.
 
 ### Tempo x espaço (trade-off)
 
