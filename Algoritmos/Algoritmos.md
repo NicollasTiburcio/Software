@@ -189,10 +189,10 @@ O tamanho da entrada é representado pela variável `n`. O desempenho do algorit
 
 Há basicamente duas formas distintas de realizar operações em uma estrutura com `n` elementos:
 
-- **Acesso direto:** Os elementos são acessados diretamente por meio de uma única operação matemática, permitindo acessar qualquer dado independentemente do tamanho da estrutura, mantendo um tempo constante.
+- **Acesso direto (`O(1)`):** Os elementos são acessados diretamente por meio de uma única operação matemática, permitindo acessar qualquer dado independentemente do tamanho da estrutura, mantendo um tempo constante.
     - **Exemplo:** Acessar um vetor com 3 ou 30 elementos não afeta o desempenho, pois todos os elementos são acessados por meio de seus índices, mantendo o mesmo tempo de execução. `vetor[indice]`
 
-- **Busca sequencial:** Para saber se um valor está na estrutura, os itens são percorridos individualmente, do primeiro até encontrar o valor desejado ou chegar ao último. À medida que `n` cresce, podem ser necessárias mais operações.
+- **Busca sequencial (`O(n)`):** Para saber se um valor está na estrutura, os itens são percorridos individualmente, do primeiro até encontrar o valor desejado ou chegar ao último. À medida que `n` cresce, podem ser necessárias mais operações.
     - **Exemplo:** Para verificar se o elemento `x` está na lista `y`, precisamos verificar cada item individualmente até encontrá-lo ou chegar ao final da lista. `for i in lista`
 
 **Melhor cenário x pior cenário**
@@ -255,10 +255,10 @@ Para analisar esse impacto, é preciso avaliar o consumo em duas frentes:
 
 Existem diferentes classes para medir a complexidade espacial, sendo elas:
 
-- **`O(1)` - Espaço constante:** O algoritmo utiliza apenas um número fixo de variáveis locais para realizar um processamento, tendo consumo de memória adicional fixo, não dependente da entrada `n`.
+- **Espaço constante (`O(1)`):** O algoritmo utiliza apenas um número fixo de variáveis locais para realizar um processamento, tendo consumo de memória adicional fixo, não dependente da entrada `n`.
     - **Exemplo:** Calcular a soma de todos os números de uma lista usando uma variável acumuladora (`total += numero`).
 
-- **`O(n)` - Espaço linear:** A quantidade de memória auxiliar necessária cresce em proporção direta ao tamanho da entrada `n`.
+- **Espaço linear (`O(n)`):** A quantidade de memória auxiliar necessária cresce em proporção direta ao tamanho da entrada `n`.
     - **Exemplo:** Criar uma nova lista para armazenar uma cópia ou versão transformada dos `n` elementos da lista original: `lista_dobrada = [x * 2 for x in lista]`.
 
 Quando analisamos o espaço auxiliar, classificamos apenas a memória adicional utilizada pelo algoritmo, desconsiderando a memória necessária para armazenar os dados de entrada. Por isso, é importante distinguir essa análise da complexidade espacial total.
