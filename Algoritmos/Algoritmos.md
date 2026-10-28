@@ -240,7 +240,7 @@ tempo_execucao = fim - inicio
 print(f"Tempo de execução: {tempo_execucao:.6f} segundos")
 ```
 
-Experimente diferentes valores para `n`, como 100, 10_000, 100_000 e 1_000_000, comparando os resultados obtidos.
+Experimente diferentes valores para `n`, como 100, 1_000 e 10_000, comparando os resultados obtidos.
 
 ### Complexidade Espacial
 
@@ -277,6 +277,43 @@ Um algoritmo recursivo só é válido se tiver duas partes:
 A escolha entre uma solução iterativa (loops) e uma solução recursiva tem impacto direto na memória RAM. A cada chamada recursiva, o sistema aloca recursos na memória para uma nova instância da função, empilhando variáveis locais e o endereço de retorno da chamada anterior na estrutura chamada `call stack` (pilha de chamadas). Em suma, cada chamada recursiva cria um novo contexto de execução, acumulando memória até que o caso-base seja atingido e as chamadas comecem a retornar.
 
 Por esse motivo, uma solução iterativa que utiliza apenas uma quantidade fixa de variáveis pode manter espaço auxiliar constante (`O(1)`), enquanto uma implementação recursiva equivalente pode exigir espaço linear (`O(n)`) devido ao empilhamento das chamadas. Se a profundidade da recursão for muito elevada, o programa pode atingir o limite de chamadas permitido pelo interpretador ou esgotar a memória disponível para a pilha, provocando um erro de execução.
+
+**Experimento prático**
+
+Utilize o código abaixo para observar a quantidade de memória alocada durante a execução de diferentes algoritmos. Repita os testes aumentando gradualmente o tamanho da entrada (`n`) e observe como o consumo de memória varia.
+
+Para isso, utilizaremos a biblioteca `tracemalloc`, que permite monitorar as alocações de memória realizadas pelo Python.
+
+*Atenção:* Essa medição não determina a complexidade espacial de um algoritmo. Ela registra o pico de memória rastreada durante a execução, sem necessariamente representar toda a memória RAM utilizada pelo programa.
+
+```python
+import tracemalloc
+
+# Tamanho da entrada
+n = 100
+
+# Início da medição
+tracemalloc.start()
+
+# Preparação dos dados
+lista = list(range(n))
+
+############
+# Escreva seu código aqui
+############
+
+# Fim da medição
+memoria_atual, memoria_pico = tracemalloc.get_traced_memory()
+
+# Parada damedição
+tracemalloc.stop()
+
+#Exibição
+print(f"Memória atual: {memoria_atual / 1024 ** 2: .6f} MiB")
+print(f"Pico de memória: {memoria_pico / 1024 ** 2: .6f} MiB")
+```
+
+Experimente diferentes valores para `n`, como `100`, `1_000` e `10_000`, comparando os resultados obtidos.
 
 ### Tempo x espaço (trade-off)
 
