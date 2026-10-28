@@ -163,12 +163,104 @@ print(alunos)             # Saída: {'João': 18, 'Julia': 20, 'Thiago': 33}
 | `len()` | Retorna a quantidade de pares chave-valor | `len({"A": 10, "B": 20})` | `2` |
 | `dict()` | Cria um dicionário a partir de pares chave-valor | `dict([("A", 10), ("B", 20)])` | `{'A': 10, 'B': 20}` |
 
+### Conjuntos (Sets)
+
+Conjuntos são coleções não ordenadas de elementos únicos, utilizadas para armazenar dados sem duplicidade e realizar operações matemáticas entre conjuntos.
+
+**Características Gerais**
+
+- **Elementos únicos:** Não permitem valores duplicados. Ao inserir um elemento que já existe, o conjunto permanece inalterado.
+- **Não ordenados:** Os elementos não possuem posições definidas por índices, impossibilitando seu acesso por posição.
+- **Mutabilidade:** Permitem adicionar e remover elementos após sua criação.
+- **Elementos imutáveis:** Em Python, os conjuntos armazenam elementos de tipos imutáveis, como inteiros, strings e tuplas compostas por elementos imutáveis.
+- **Heterogêneos:** Suportam diferentes tipos de dados simultaneamente, desde que sejam válidos como elementos de um conjunto.
+- **Sintaxe:** São declarados utilizando chaves (`{}`), com elementos separados por vírgulas. Ex.: `conjunto = {1, 2, 3}`. Para criar um conjunto vazio, utiliza-se `set()`.
+
+**Vantagens:** Impedem automaticamente a duplicação de dados e permitem realizar operações matemáticas entre conjuntos.
+
+**Desvantagens:** Não permitem acesso por índices nem garantem uma ordem de apresentação dos elementos. Também podem exigir mais memória RAM do que estruturas sequenciais.
+
+**Cenários de Uso**
+- Remoção de valores duplicados em coleções.
+- Verificação da existência de elementos em grandes conjuntos de dados.
+- Identificação de elementos comuns ou exclusivos entre diferentes coleções.
+
+**Exemplo de Conjunto**
+
+```Python
+# Criando um conjunto
+numeros = {1, 2, 2, 3}
+
+# Contando elementos (duplicatas são ignoradas)
+print(len(numeros))    # Saída: 3
+
+# Adicionando um elemento
+numeros.add(4)
+print(len(numeros))    # Saída: 4
+
+# Removendo um elemento
+numeros.remove(2)
+print(len(numeros))    # Saída: 3, pois o número 2 só aparecia uma vez.
+
+# Verificando a existência de um elemento
+print(3 in numeros)    # Saída: True
+
+# Criando conjuntos para operações matemáticas
+conjunto_a = {1, 2, 3}
+conjunto_b = {3, 4, 5}
+
+# Interseção (elementos comuns)
+print(conjunto_a.intersection(conjunto_b))    # Saída: {3}
+```
+
+**Métodos de conjuntos**
+
+| Método | Descrição | Exemplo | Resultado |
+|---|---|---|---|
+| `add(x)` | Adiciona um elemento ao conjunto | `{1, 2}.add(3)` | Adiciona `3` ao conjunto |
+| `remove(x)` | Remove um elemento; gera erro se não existir | `{1, 2}.remove(2)` | Remove `2` |
+| `discard(x)` | Remove um elemento sem gerar erro caso não exista | `{1, 2}.discard(3)` | Conjunto inalterado |
+| `union()` | Retorna a união de dois conjuntos | `{1, 2}.union({2, 3})` | `{1, 2, 3}` |
+| `intersection()` | Retorna os elementos comuns | `{1, 2}.intersection({2, 3})` | `{2}` |
+| `difference()` | Retorna os elementos exclusivos do primeiro conjunto | `{1, 2}.difference({2, 3})` | `{1}` |
+| `clear()` | Remove todos os elementos | `{1, 2}.clear()` | Conjunto vazio |
+
+**Funções aplicáveis a conjuntos**
+
+| Função | Descrição | Exemplo | Resultado |
+|---|---|---|---|
+| `len()` | Retorna a quantidade de elementos | `len({1, 2, 3})` | `3` |
+| `max()` | Retorna o maior elemento | `max({4, 8, 2})` | `8` |
+| `min()` | Retorna o menor elemento | `min({4, 8, 2})` | `2` |
+| `sum()` | Soma os elementos numéricos | `sum({1, 2, 3})` | `6` |
+| `set()` | Cria um conjunto a partir de um iterável | `set([1, 2, 2, 3])` | `{1, 2, 3}` |
+
 ## Desempenho de Algoritmos
 
 Ao desenvolver um algoritmo, precisamos avaliar o quão eficiente ele é ao processar volumes crescentes de dados. Essa eficiência pode ser avaliada sob duas perspectivas:
 
 1. **Complexidade temporal:** Quanto tempo (ou quantas operações) o algoritmo leva para ser executado.
 2. **Complexidade espacial:** Quanta memória RAM o algoritmo exige durante sua execução.
+
+### Notação Big O
+
+A notação Big-O (ou notação de ordem de crescimento) é utilizada para representar o desempenho e a escalabilidade de um algoritmo através do consumo de recursos em função do tamanho da entrada de dados, permitindo avaliar o tempo de execução e o consumo de memória à medida que esse volume de dados cresce.
+
+**Tamanho da entrada (`n`) e função `f(n)`**
+
+O tamanho da entrada é representado pela variável `n`, enquanto `f(n)` representa a quantidade de recursos necessários para executar o algoritmo, como operações de processamento ou espaço de memória.
+
+A notação Big O estabelece um limite para o crescimento dessa função, considerando seu desempenho à medida que `n` aumenta.
+
+**Principais classes de complexidade**
+
+| Classe | Comportamento | Exemplo |
+|---|---|---|
+| `O(1)` - Constante | O consumo de recursos não cresce com `n`. | Acessar um elemento diretamente pelo índice. |
+| `O(n)` - Linear | O consumo cresce proporcionalmente a `n`. | Percorrer todos os elementos de uma lista. |
+| `O(n²)` - Quadrática | O consumo cresce proporcionalmente ao quadrado de `n`. | Dois laços aninhados percorrendo `n` elementos. |
+
+Essas classes permitem comparar o crescimento dos recursos exigidos por diferentes algoritmos, tanto em relação ao processamento quanto à memória.
 
 ### Complexidade temporal
 
@@ -181,18 +273,14 @@ Por mais que possa parecer natural medir a eficiência pelo tempo gasto, como 0,
 
 Devido a esses fatores, devemos desvincular a medição da eficiência do hardware e passar a medir o número de operações que o algoritmo realiza conforme o tamanho da entrada cresce.
 
-**Tamanho da entrada (`n`) e função `f(n)`**
-
-O tamanho da entrada é representado pela variável `n`. O desempenho do algoritmo é avaliado pelo crescimento do número de operações, representado por `f(n)`, em função do aumento de `n`.
-
-**Busca sequencial e acesso direto**
+**Tempo constante e tempo linear**
 
 Há basicamente duas formas distintas de realizar operações em uma estrutura com `n` elementos:
 
-- **Acesso direto (`O(1)`):** Os elementos são acessados diretamente por meio de uma única operação matemática, permitindo acessar qualquer dado independentemente do tamanho da estrutura, mantendo um tempo constante.
+- **Tempo constante (`O(1)`):** Os elementos são acessados diretamente por meio de uma única operação matemática, permitindo acessar qualquer dado independentemente do tamanho da estrutura, mantendo um tempo constante.
     - **Exemplo:** Acessar um vetor com 3 ou 30 elementos não afeta o desempenho, pois todos os elementos são acessados por meio de seus índices, mantendo o mesmo tempo de execução. `vetor[indice]`
 
-- **Busca sequencial (`O(n)`):** Para saber se um valor está na estrutura, os itens são percorridos individualmente, do primeiro até encontrar o valor desejado ou chegar ao último. À medida que `n` cresce, podem ser necessárias mais operações.
+- **Tempo linear (`O(n)`):** Para saber se um valor está na estrutura, os itens são percorridos individualmente, do primeiro até encontrar o valor desejado ou chegar ao último. À medida que `n` cresce, podem ser necessárias mais operações.
     - **Exemplo:** Para verificar se o elemento `x` está na lista `y`, precisamos verificar cada item individualmente até encontrá-lo ou chegar ao final da lista. `for i in lista`
 
 **Melhor cenário x pior cenário**
@@ -251,9 +339,9 @@ Para analisar esse impacto, é preciso avaliar o consumo em duas frentes:
 - **Espaço de entrada:** A memória necessária para armazenar os dados brutos recebidos pelo programa.
 - **Espaço auxiliar:** A memória extra alocada pelo algoritmo durante sua execução para criar variáveis, estruturas intermediárias ou gerenciar o fluxo de controle.
 
-**Classes de complexidade espacial**
+**Espaço constante e espaço linear**
 
-Existem diferentes classes para medir a complexidade espacial, sendo elas:
+Para compreender a aplicação dessas classes na complexidade espacial, podemos observar dois comportamentos comuns:
 
 - **Espaço constante (`O(1)`):** O algoritmo utiliza apenas um número fixo de variáveis locais para realizar um processamento, tendo consumo de memória adicional fixo, não dependente da entrada `n`.
     - **Exemplo:** Calcular a soma de todos os números de uma lista usando uma variável acumuladora (`total += numero`).
@@ -292,11 +380,11 @@ import tracemalloc
 # Tamanho da entrada
 n = 100
 
-# Início da medição
-tracemalloc.start()
-
 # Preparação dos dados
 lista = list(range(n))
+
+# Início da medição
+tracemalloc.start()
 
 ############
 # Escreva seu código aqui
@@ -305,7 +393,7 @@ lista = list(range(n))
 # Fim da medição
 memoria_atual, memoria_pico = tracemalloc.get_traced_memory()
 
-# Parada damedição
+# Parada da medição
 tracemalloc.stop()
 
 #Exibição
