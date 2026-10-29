@@ -283,7 +283,7 @@ def mdc_recursivo(a, b):
     # Caso Recursivo. Executa se b for diferente de 0.
     resto = a % b
     print(f"Operação realizada: {a} % {b} = {resto}")
-    return mdc_recursivo(b, resto) #Passa como parâmetro "b" junto com o resto da divisão a/b.
+    return mdc_recursivo(b, resto) #Passa como argumento "b" junto com o resto da divisão a/b.
 
 a = 48
 b = 18
