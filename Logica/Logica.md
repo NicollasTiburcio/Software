@@ -259,3 +259,35 @@ def somar(a, b):
 resultado = somar(10, 20)
 print(resultado)
 ```
+
+### Funções Recursivas
+
+A recursividade é uma técnica na qual uma função chama a si mesma durante sua própria execução. Essa função é normalmente utilizada para resolver problemas que podem ser divididos em subproblemas menores cuja natureza seja a mesma do problema principal. Ou seja, se o procedimento utilizado para resolver um problema pode ser o mesmo procedimento usado para suas partes divididas, então a recursividade é capaz de lidar com ele.
+
+**Estrutura**
+Para que a função recursiva não entre em uma repetição infinita, ela deve obrigatoriamente possuir duas coisas:
+
+- **Caso Base:** É o critério de parada. Tendo o problema decomposto ao máximo, com a solução sendo aplicada sem a necessidade de uma nova chamada da função, é a condição que vai interromper as chamadas e iniciar o retorno dos valores.
+    - **Exemplo:** Ao calcular o MDC por divisões sucessivas, o Caso Base ocorre quando o resto da divisão é igual a zero (`if resto == 0`): a função interrompe novas divisões e retorna o divisor atual como resultado.
+- **Caso Recursivo:** Também chamado de Passo Recursivo, é o trecho em que a função decompõe o problema para aproximá-lo do caso base, chamando novamente a função e passando o novo valor alterado como argumento.
+    - **Exemplo:** Quando a divisão ainda não é exata, o Caso Recursivo redefine o problema chamando a função novamente com os novos papéis (`mdc(divisor, resto)`), diminuindo os valores a cada chamada.
+
+Exemplo de função recursiva:
+
+```Python
+def mdc_recursivo(a, b):
+    # Caso base. Se "b" for igual a 0, a função irá retornar "a" e parar
+    if b == 0:
+        print(f"Caso base atingido.")
+        return a
+    # Caso Recursivo. Executa se b for diferente de 0.
+    resto = a % b
+    print(f"Operação realizada: {a} % {b} = {resto}")
+    return mdc_recursivo(b, resto) #Passa como parâmetro "b" junto com o resto da divisão a/b.
+
+a = 48
+b = 18
+
+print(f"O MDC é: {mdc_recursivo(a, b)}")
+
+```
