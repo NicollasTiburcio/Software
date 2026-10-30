@@ -388,23 +388,27 @@ print(f"Pico de memória: {memoria_pico / 1024 ** 2: .6f} MiB")
 
 Experimente diferentes valores para `n`, como `100`, `1_000` e `10_000`, comparando os resultados obtidos.
 
-**Recursividade**
-
-A recursividade é uma técnica em que uma função chama a si mesma para quebrar um grande problema em problemas menores, até atingir uma condição explícita de parada.
-
-Um algoritmo recursivo só é válido se tiver duas partes:
-
-- **Caso-base:** A condição de parada, que retorna um valor direto, sem fazer novas chamadas.
-- **Passo recursivo:** A etapa em que a função divide o problema chamando a si mesma com um argumento reduzido, aproximando-se do caso-base.
-
-**Impacto na memória**
-
-A escolha entre uma solução iterativa (loops) e uma solução recursiva tem impacto direto na memória RAM. A cada chamada recursiva, o sistema aloca recursos na memória para uma nova instância da função, empilhando variáveis locais e o endereço de retorno da chamada anterior na estrutura chamada `call stack` (pilha de chamadas). Em suma, cada chamada recursiva cria um novo contexto de execução, acumulando memória até que o caso-base seja atingido e as chamadas comecem a retornar.
-
-Por esse motivo, uma solução iterativa que utiliza apenas uma quantidade fixa de variáveis pode manter espaço auxiliar constante (`O(1)`), enquanto uma implementação recursiva equivalente pode exigir espaço linear (`O(n)`) devido ao empilhamento das chamadas. Se a profundidade da recursão for muito elevada, o programa pode atingir o limite de chamadas permitido pelo interpretador ou esgotar a memória disponível para a pilha, provocando um erro de execução.
-
 ### Tempo x espaço (trade-off)
 
 É comum precisar escolher entre otimizar o tempo ou o espaço. Estruturas como dicionários podem consumir grandes volumes de memória para garantir buscas em tempo constante (`O(1)`), sacrificando espaço em troca de velocidade.
 
 Por outro lado, quando a memória é um recurso crítico, em vez de manter estruturas auxiliares armazenadas, os dados são calculados no momento em que são gerados, custando mais CPU para processar, mas reduzindo o custo em memória.
+
+### Testes de Desempenho (Benchmark)
+
+Além da análise teórica, podemos realizar testes práticos para observar o comportamento dos algoritmos, medindo o tempo de execução e o consumo de memória em diferentes condições.
+
+Algumas boas práticas para elaborar testes de algoritmos são:
+
+1. **Isolar a Preparação dos Dados (Setup):** Os dados a serem processados devem ser gerados antes do início das medições, ignorando assim o tempo gasto para ler ou criar valores aleatórios.
+    - **Exemplo:** Crias as listas `list(range(1000))` antes de iniciar a medição.
+
+2. **Rodada de Aquecimento (Warm-up):** Executar o algoritmo antes de iniciar as medições, descartando os resultados iniciais para reduzir interferências relacionadas à inicialização.
+    - **Exemplo:** Executar a função uma vez antes de começar a registrar os tempos com `time.perf_counter()`.
+
+3. **Variação de Entrada e Curva de `n`:** O algoritmo deve ser testado utilizando entradas crescentes de dados, confirmando empiricamente o comportamento do algoritmo em relação a curva Big-O.
+    - **Exemplo:** `n = 100` -> `n = 1000`.
+
+4. **Medição por múltiplas repetições (Tempo):** Testar o algoritmo múltiplas vezes para avaliar o menor tempo e o tempo médio, reduzindo a influência causada por outros processos do sistema operacional.
+
+5. **Medição de Memória (Espaço):** Avaliar as estruturas e os objetos utilizados pelo algoritmo, observando a memória alocada durante sua execução e seu pico de consumo.
