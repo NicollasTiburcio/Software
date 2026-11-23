@@ -1,0 +1,52 @@
+site_name: Engenharia de Software
+site_description: Apostilas e materiais didáticos de Computação
+site_url: https://nicollastiburcio.github.io/Software/
+repo_url: https://github.com/NicollasTiburcio/Software
+repo_name: NicollasTiburcio/Software
+edit_uri: edit/main/
+
+docs_dir: .
+site_dir: ../Software-site
+use_directory_urls: false
+
+theme:
+  name: material
+  language: pt-BR
+  palette:
+    - scheme: slate
+      primary: blue grey
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: Alternar para o tema claro
+    - scheme: default
+      primary: blue grey
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Alternar para o tema escuro
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+
+# Não publicar arquivos de configuração nem o README do GitHub.
+# Arquivos e pastas ocultos (como .github/) já são ignorados pelo MkDocs.
+exclude_docs: |
+  /README.md
+  /_config.yml
+  /mkdocs.yml
